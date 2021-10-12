@@ -1,0 +1,98 @@
+
+{% extends "basic.html" %}
+{% block body %}
+    <div class="container category-sec-main">
+        <div class="row mb-5">
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-header">Categories</div>
+                    <div class="list-group list-group-flush">
+                        {% for i in subcategory %}
+                        <a href="#{{ i.name }}" class="list-group-item list-group-item-action">{{ i.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                </div>
+            <div class="col-md-9 cate-product-right">
+                <div class="cate-head">
+                    <h2>Personalized Photo Gifts</h2>
+                    <p>Custom printed gifts for your cherished ones! Gift them the favourite memories you shared together!</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Sort By:</span>
+                                    </div>
+                                    <select class="form-control" id="" name="">
+                                        <option value="">Default</option>
+                                        <option value="">Name (A - Z)</option>
+                                        <option value="">Name (Z - A)</option>
+                                        <option value="">Price (Low &gt; High)</option>
+                                        <option value="">Price (High &gt; Low)</option>
+                                        <option value="">Rating (Highest)</option>
+                                        <option value="">Rating (Lowest)</option>
+                                        <option value="">Model (A - Z)</option>
+                                        <option value="">Model (Z - A)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  <div class="row item ">
+                   {% for i in subcategory %}
+
+                       <div class="col-lg-4" id="{{ i.name }}">
+                        <div class="relative-product-inner">
+                            <a href="{% url 'prodcutviewcus' i.id %}">
+                                <div class="product-img-left"><img src="{{i.image.url}}" alt="" title="" height="250px" width="250px"></div>
+                                <div class="category-text">
+                                    <h3>{{i.name}}</h3>
+
+                                    <span>( Available in 4 sizes )</span>
+                                    <a href="{% url 'prodcutviewcus' i.id %}" class="category-btn">Buy Now</a>
+                                </div>
+                            </a>
+                            <div class="product-overlay"><a href="#">
+                            </a>
+                            <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                            </a>
+                            <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                            </a>
+                            <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                          </div>
+                        </div>
+                       </div>
+
+                        {% endfor %}
+                    </div>
+                    <div class="card-footer p-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="pagination m-0">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="text-right mb-0 mt-1">Showing 1 to 12 of 12 (1 Pages)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

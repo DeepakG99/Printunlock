@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Aeonik';
+    src: url('Aeonik-Black.eot');
+    src: url('Aeonik-Black.eot?#iefix') format('embedded-opentype'),
+        url('Aeonik-Black.woff2') format('woff2'),
+        url('Aeonik-Black.woff') format('woff'),
+        url('Aeonik-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aeonik';
+    src: url('Aeonik-Light.eot');
+    src: url('Aeonik-Light.eot?#iefix') format('embedded-opentype'),
+        url('Aeonik-Light.woff2') format('woff2'),
+        url('Aeonik-Light.woff') format('woff'),
+        url('Aeonik-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aeonik';
+    src: url('Aeonik-Bold.eot');
+    src: url('Aeonik-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Aeonik-Bold.woff2') format('woff2'),
+        url('Aeonik-Bold.woff') format('woff'),
+        url('Aeonik-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aeonik';
+    src: url('Aeonik-Medium.eot');
+    src: url('Aeonik-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Aeonik-Medium.woff2') format('woff2'),
+        url('Aeonik-Medium.woff') format('woff'),
+        url('Aeonik-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aeonik';
+    src: url('Aeonik-Regular.eot');
+    src: url('Aeonik-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Aeonik-Regular.woff2') format('woff2'),
+        url('Aeonik-Regular.woff') format('woff'),
+        url('Aeonik-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

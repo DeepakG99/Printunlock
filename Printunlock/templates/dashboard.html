@@ -1,0 +1,133 @@
+{% extends "customerbase.html" %}
+{% block content %}
+    <section class="dashbord-sec">
+        <div class="dasb-inner-box">
+            <div class="buttons-tab">
+                <button class="tablink" onclick="openPage('Dashboard')" id="defaultOpen">Dashboard</button>
+                <button class="tablink" onclick="openPage('Orders')">Orders</button>
+                <button class="tablink" onclick="openPage('Downloads')">Downloads</button>
+                <button class="tablink" onclick="openPage('Addresses')">Addresses</button>
+                <button class="tablink" onclick="openPage('Account-Details')">Account Details</button>
+                <button class="tablink" onclick="openPage('Wishlist')">Wishlist</button>
+                <button class="tablink"><a href="{% url 'CustomerLogout' %}">Logout</a></button>
+            </div>
+            <div class="tab-cntnt">
+                <div id="Dashboard" class="tabcontent">
+                    <div class="dash-cntnt">
+                        <h3>Dashboard</h3>
+                        <p>This is Dashboard</p>
+                        <div class="my-account-links">
+
+                            <div class="orders-link dash-link">
+                                <a href="my-account/orders/">Orders</a>
+                            </div>
+                            <div class="downloads-link dash-link">
+                                <a href="my-account/downloads/">Downloads</a>
+                            </div>
+                            <div class="edit-address-link dash-link">
+                                <a href="my-account/edit-address/">Addresses</a>
+                            </div>
+                            <div class="edit-account-link dash-link">
+                                <a href="my-account/edit-account/">Account details</a>
+                            </div>
+                            <div class="wishlist-link dash-link">
+                                <a href="wishlist/">Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Orders" class="tabcontent">
+                    <div class="dash-cntnt">
+                        <h3>Orders</h3>
+                
+<div style="overflow-x:auto;">
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>total amount</th>
+      <th>orderdate</th>
+    </tr>
+    {% for items in item %}
+    <tr>
+      <td><img src="{{items.cart.product.image.url}}" alt="" height="100px" width="100px"></td>
+      <td>{{items.cart.product.title}}</td>
+      <td>{{items.cart.quantity}}</td>
+      <td>{{items.cart.costprice}}</td>
+      <td>{{items.order.orderdate}}</td>
+    </tr>
+    {% endfor %}
+</div>
+</div>
+</div>
+                <div id="Downloads" class="tabcontent">
+                    <div class="dash-cntnt">
+                        <h3>Downloads</h3>
+                        <p>This is Downloads</p>
+                    </div>
+                </div>
+
+                <div id="Addresses" class="tabcontent">
+                    <div class="dash-cntnt">
+                        <h3>Addresses</h3>
+                        <p>This is Addresses</p>
+                    </div>
+                </div>
+
+                <div id="Account-Details" class="tabcontent">
+                    <div class="dash-cntnt">
+                        <h3>Account Details</h3>
+                            <table>
+                              <tr>
+                                <th>Name</th>
+                                <th>Email Address</th>
+                                <th>Phone</th>
+                                <th>Added Date</th>
+                              </tr>
+                              {% for orders in order %}
+                              <tr>
+                                <td>{{orders.customer.name}}</td>
+                                <td>{{items.customer.email}}</td>
+                                <td>{{items.customer.phone}}</td>
+                                <td>{{items.customer.added_date}}</td>
+                              </tr>
+                              {% endfor %}
+                    </div>
+                </div>
+
+                <div id="Wishlist" class="tabcontent">
+                    <div class="dash-cntnt">
+                        <h3>Wishlist</h3>
+                        <p>This is Wishlist</p>
+                    </div>
+                </div>
+                <div id="Logout" class="tabcontent">
+                    <div class="dash-cntnt">
+                        <h3>Logout</h3>
+                        <p>This is Logout</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function openPage(pageName, elmnt, color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+{% endblock content %}

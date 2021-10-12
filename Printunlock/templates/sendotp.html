@@ -1,0 +1,9 @@
+{% extends "customerbase.html" %}
+{% block content %}
+<form action="{% url 'send_otp' %}" method="POST">
+    {% csrf_token %}
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required><br>
+    <button  type="submit" name="submit">Send OTP</button>
+</form>
+ {% endblock content %}

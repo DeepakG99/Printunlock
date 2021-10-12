@@ -1,0 +1,670 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Printunlock Dashboard</title>
+ 
+  <link href="/static/css/das.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+  <link href="/static/icon_fonts_assets/typicons/typicons.css" rel="stylesheet">
+  <script src="../static/bower_components/moment/moment.js"></script>
+  <script src="../static/bower_components/chart.js/dist/Chart.min.js"></script>
+
+
+
+<script src="../static/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../static/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="../static/bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="../static/js/main.js?version=4.5.0"></script> 
+ <script src="../static/js/main_rentals.js?version=4.5.0"></script>
+
+
+</head>
+<body>
+  <section id ="header">
+       <div class="container-fluid">
+         <div class="row">
+           <div class="col-md-6">
+             <div class="logo">
+               <img src="/static/img/logo.png" alt="">
+             </div>
+           </div>
+           <div class="col-md-6">
+             <div class="profile">
+               <div class="search">
+               <form action="">
+                 <input type="text" name="search" id="search">
+                 <button type="submit" name="submit"><i class="icon-magnifier icons"></i></button>
+               </form>
+               </div>
+               <div class="message-box">
+                <span class="typcn typcn-messages"><sup>1</sup>
+                  <div class="tooltiptext">
+                    <div class="tooldata">
+                      <img src="/static/img/avatar4.jpg" alt="">
+                      <div class="mess-data">
+                      <h5>Md Moin</h5>
+                      <h6>Python Developer</h6>
+                    </div> 
+                    </div>
+                    <div class="tooldata">
+                      <img src="/static/img/avatar4.jpg" alt="">
+                      <div class="mess-data">
+                      <h5>{{user.first_name}}</h5>
+                      <h6>Python Developer</h6>
+                      </div>
+                    </div>
+                    <div class="tooldata">
+                      <img src="/static/img/avatar4.jpg" alt="">
+                      <div class="mess-data">
+                      <h5>Md Moin</h5>
+                      <h6>Python Developer</h6>
+                      </div>
+                    </div>
+                    <div class="tooldata">
+                      <img src="/static/img/avatar4.jpg" alt="">
+                      <div class="mess-data">
+                      <h5>Md Moin</h5>
+                      <h6>Python Developer</h6>
+                      </div>
+                    </div>
+                   </div>
+                </span>
+               </div>
+               <div class="setting-box">
+                <i class="icon-settings icons"></i>
+                  <div class="setting-hov">
+                    <div class="setting-data">
+                      <span class="typcn typcn-edit"></span>
+                      <h5>Profile Settings</h5>
+                    </div>
+                    <div class="setting-data">
+                      <span class="typcn typcn-tabs-outline"></span>
+                      <h5>Billing Info</h5>
+                    </div>
+                    <div class="setting-data">
+                      <span class="typcn typcn-printer"></span>
+                      <h5>My Invoices</h5>
+                    </div>
+                    <div class="setting-data">
+                      <span class="typcn typcn-trash"></span>
+                      <h5>Cancel Account</h5>
+                    </div>
+                  </div>
+               </div>
+               <div class="profile-pic">
+                  <span class="dot">
+                    <img src="/static/img/avatar4.jpg" alt="" class="rounded-circle">
+                    <div class="profile-hov">
+                      <div class="tooldata">
+                        <img src="/static/img/avatar4.jpg" alt="" class="rounded-circle">
+                        <div class="mess-data">
+                        <h5>{{user.first_name}}</h5>
+                        <h6>Python Developer</h6>
+                        </div>
+                      </div>
+                      <div class="setting-data">
+                        <span class="typcn typcn-mail"></span>
+                        <h5>Incoming Mail</h5>
+                      </div>
+                      <div class="setting-data">
+                        <i class="icon-user icons"></i>
+                        <h5>Profile Details</h5>
+                      </div>
+                      <div class="setting-data">
+                        <span class="typcn typcn-tabs-outline"></span>
+                        <h5>Billing Details</h5>
+                      </div>
+                      <div class="setting-data">
+                        <span class="typcn typcn-bell"></span>
+                        <h5>Notifications</h5>
+                      </div>
+                      <div class="setting-data">
+                        <i class="icon-logout icons"></i>
+                        <h5><a href="{% url 'SuperLogout' %}" style="text-decoration: none; color:white">Logout</a></h5>
+                      </div>
+                     </div>
+                  </span>
+               </div>
+             </div>
+         </div>
+        </div>
+      </div>
+  </section>
+<section id="menu">
+        <div class="menu-list">
+          <div class="profile-pics">
+            <span class="dots">
+              <img src="/static/img/avatar4.jpg" alt="" class="rounded-circle">
+              <div class="profile-hov">
+                <div class="tooldata">
+                  <img src="/static/img/avatar4.jpg" alt="" class="rounded-circle">
+                  <div class="mess-data">
+                  <h5>{{user.first_name}}</h5>
+                  <h6>Python Developer</h6>
+                  </div>
+                </div>
+                <div class="setting-data">
+                  <span class="typcn typcn-mail"></span>
+                  <h5>Incoming Mail</h5>
+                </div>
+                <div class="setting-data">
+                  <i class="icon-user icons"></i>
+                  <h5>Profile Details</h5>
+                </div>
+                <div class="setting-data">
+                  <span class="typcn typcn-tabs-outline"></span>
+                  <h5>Billing Details</h5>
+                </div>
+                <div class="setting-data">
+                  <span class="typcn typcn-bell"></span>
+                  <h5>Notifications</h5>
+                </div>
+                <div class="setting-data">
+                  <i class="icon-logout icons"></i>
+                  <h5><a href="{% url 'SuperLogout' %}" style="text-decoration: none; color:white">Logout</a></h5>
+                </div>
+               </div>
+            </span>
+            <h5>{{user.first_name}}</h5>
+         </div>
+           <div class="menu-items">
+            <i class="icon-home icons"></i>
+            <p><a href="{% url 'PrintHome' %}" style="text-decoration: none; color:black">Dashboard</a></p>
+           </div>
+           <div class="menu-item">
+            <i class="icon-note icons"></i>
+            <p>Blog</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Posts</h2>
+              </div>
+              <div class="setting-data">
+                <h5>All Posts</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Add Posts</h5>
+              </div>
+              <div class="setting-data">
+                <h5><a href="{% url 'BlogcategoryPage' %}" style="text-decoration: none; color: white;">Categories</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5>Tags</h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-layers icons"></i>
+            <p>Application</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Applications</h2>
+              </div>
+              <div class="setting-data">
+                <h5>Email Application</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Support Dashboard</h5>
+              </div>
+              <div class="setting-data">
+                <h5>CRM Pipeline</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Calender</h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-doc icons"></i>
+            <p>Pages</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Pages</h2>
+              </div>
+              <div class="setting-data">
+                <h5>All Pages</h5>
+              </div>
+              <div class="setting-data">
+                <h5><a href="{% url 'BannerPage' %}">Banner Page</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5>Add Page</h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-docs icons"></i>
+            <p>Products</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Products</h2>
+              </div>
+              <div class="setting-data">
+                <h5><a href="{% url 'allproductlist' %}" style="text-decoration: none; color:white">All Products</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5><a href="{% url 'addproductselect' %}" style="text-decoration: none; color:white">Add Product</a>s</h5>
+              </div>
+              <div class="setting-data">
+                <h5><a href="{% url 'globalattributes' %}" style="text-decoration: none; color:white">Global Attributes</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5><a href="{% url 'globalattributes' %}" style="text-decoration: none; color:white">Sub-Categories</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5><a href="#" style="text-decoration: none; color:white">Attributes</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5>Tags</h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-handbag icons"></i>
+            <p>E-Commerce</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>E-Commerce</h2>
+              </div>
+              <div class="setting-data">
+                <h5>Home</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Order</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Customer</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Reports</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Setting</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Status</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Extensions</h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-badge icons"></i>
+            <p>Offers</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2 >Offers</h2>
+              </div>
+                 <div class="setting-data">
+                <h5><a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggleTC" role="button" style="background-color: blue;">Trending Category</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5><a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggleCoupon" role="button" style="background-color: blue;">Coupon</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5><a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggleBest" role="button" style="background-color: blue;">Best seller</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5>
+                  <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalTogglenew" role="button" style="background-color: blue;">New launches</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5>
+                  <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggleTrend" role="button" style="background-color: blue;">Trending</a></h5>
+              </div>
+              
+              
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-chart icons"></i>
+            <p>Marketting</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Marketting</h2>
+              </div>
+              <div class="setting-data">
+                <h5>Overview</h5>
+              </div>
+              <div class="setting-data">
+                <h5><a href="#" style="text-decoration: none; color: white;">Cupons</a></h5>
+              </div>
+              <div class="setting-data">
+                <h5>Offers</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Tags</h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-social-dropbox icons"></i>
+            <p>Analytics</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Analytics</h2>
+              </div>
+              <div class="setting-data">
+                <h5>Overview</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Products</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Orders Reports</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Shipping</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Stock</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Taxes</h5>
+              </div>
+              </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-people icons"></i>
+            <p>Users</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Users</h2>
+              </div>
+              <div class="setting-data">
+                <h5>All Users</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Profile</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Add New </h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-bubble icons"></i>
+            <p>Comments</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Comments</h2>
+              </div>
+              <div class="setting-data">
+                <h5>All coomments</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Regular</h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-wrench icons"></i>
+            <p>Tools</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Posts</h2>
+              </div>
+              <div class="setting-data">
+                <h5>All Posts</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Add Posts</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Categories</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Tags</h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-settings icons"></i>
+            <p>Settings</p>
+            <div class="profile-hov">
+              <div class="setting-data">
+                <h2>Posts</h2>
+              </div>
+              <div class="setting-data">
+                <h5>All Posts</h5>
+              </div>
+              <div class="setting-data">
+                <h5>Add Posts</h5>
+              </div>
+             </div>
+           </div>
+           <div class="menu-item">
+            <i class="icon-picture icons"></i>
+            <p>Media</p>
+           </div>
+        </div>
+      </div>
+         <div class="dash-show">
+           {% block content %}
+           {% endblock %}
+         </div>
+  </section>
+
+ 
+  <div class="modal fade" id="exampleModalToggleCoupon" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Coupon</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'AddCategoryPage' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Coupon</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Category Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Slug Name</label>
+                <input type="text" class="form-control" id="slug" aria-describedby="emailHelp" name="slug" placeholder="Slug Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Price</label>
+                <input type="number" class="form-control" id="price" aria-describedby="emailHelp" name="price" placeholder="Enter Price">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload Image</label><br>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+              </div><br>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModalToggleTC" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Trending category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'shopbycate' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload Image</label><br>
+
+<select name="cateid">
+                   <option selected>Choose Category</option>
+                   {% for i in cat %}
+                       <option value="{{ i.id }}">{{ i.name }}</option>
+                   {% endfor %}
+               </select>
+
+              </div><br>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div class="modal fade" id="exampleModalToggleBest" aria-hidden="true" aria-labelledby="exampleModalToggleBestLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleBestLabel">Best seller</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url  'AddCategoryPage' %}" method = "POST" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputEmail1">Coupon</label>
+              <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Category Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Slug Name</label>
+              <input type="text" class="form-control" id="slug" aria-describedby="emailHelp" name="slug" placeholder="Slug Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Price</label>
+              <input type="number" class="form-control" id="price" aria-describedby="emailHelp" name="price" placeholder="Enter Price">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Upload Image</label><br>
+              <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+            </div><br>
+            <div class="form-group">
+            <button type="submit" name="submit" class="btn btn-primary">submit</button>
+          </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModalToggleTrend" aria-hidden="true" aria-labelledby="exampleModalToggleTrendLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleTrendLabel">Trending</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url  'AddCategoryPage' %}" method = "POST" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputEmail1">Coupon</label>
+              <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Category Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Slug Name</label>
+              <input type="text" class="form-control" id="slug" aria-describedby="emailHelp" name="slug" placeholder="Slug Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Price</label>
+              <input type="number" class="form-control" id="price" aria-describedby="emailHelp" name="price" placeholder="Enter Price">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Upload Image</label><br>
+              <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+            </div><br>
+            <div class="form-group">
+            <button type="submit" name="submit" class="btn btn-primary">submit</button>
+          </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+     
+      <div class="modal fade" id="exampleModalTogglenew" aria-hidden="true" aria-labelledby="exampleModalTogglenewLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalTogglenewLabel">New launches</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="{% url  'AddCategoryPage' %}" method = "POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Coupon</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Category Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Slug Name</label>
+                    <input type="text" class="form-control" id="slug" aria-describedby="emailHelp" name="slug" placeholder="Slug Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Price</label>
+                    <input type="number" class="form-control" id="price" aria-describedby="emailHelp" name="price" placeholder="Enter Price">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Upload Image</label><br>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+                  </div><br>
+                  <div class="form-group">
+                  <button type="submit" name="submit" class="btn btn-primary">submit</button>
+                </div>
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+  <section id="footer"> 
+    <p></p>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>

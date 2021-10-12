@@ -1,0 +1,54 @@
+{% extends "customerbase.html" %}
+{% block content %}
+    <section class="tj-form-map" id="kki">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 no-padr">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.8308166517713!2d77.03662771507864!3d28.454515982488303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18467ea07e29%3A0xed0faae98b885281!2sStyle%20Plaza%2C%20Jharsa%20Rd%2C%20Kirti%20Nagar%2C%20Sector%2015%20Part%201%2C%20Sector%2015%2C%20Gurugram%2C%20Haryana%20122007!5e0!3m2!1sen!2sin!4v1622121546264!5m2!1sen!2sin" width="100%" height="495px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="col-md-6 col-sm-6 no-padl">
+                    <div class="form-box">
+                        <div class="form_desc">
+                            <h2>Contact Us</h2>
+                            <p>Feel free to get in touh with us. Fill the form</p>
+                        </div>
+                        <form method="POST" class="contact_frm">
+                            {% csrf_token %}
+                            <div class="frm-field">
+                                <input type="text" name="username" id="username" placeholder="Name">
+                                <input type="email" name="email" id="user_email" placeholder="Email">
+                            </div>
+                            <div class="frm-field">
+                                <input placeholder="Your Number" name="phone" type="text" id="phone" style="width: 100%;" minlength="10" maxlength="10">
+                            </div>
+                            <div class="frm-field">
+                                <textarea name="message" id="send_msg" placeholder="Message"></textarea>
+                            </div>
+                            <button type="submit" name="submit" class="submit-btn form2_sub">Submit <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact-info-sec">
+        <p class="relative-head">Help Center</p>
+        <div class="row contact-info">
+            <div class="info">
+                <h4>Call us for any query</h4>
+                <p><strong>Helpdesk: +91 951 373 4374</strong></p>
+                <p><em>(Mon - Sat: 10:00 AM - 6 PM)</em></p>
+            </div>
+            <div class="info">
+                <h4>Email us</h4>
+                <p><em>Sales Enquiry:</em></p>
+                <p><strong>care@printo.in </strong></p>
+            </div>
+            <div class="info">
+                <h4>Postal address</h4>
+                <p>Printo Document Services Pvt. Ltd.</p>
+                <p>No. 320/3/5, Siddappa Layout, 1st Main, Bommanahalli, Bangalore 560 068.</p>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

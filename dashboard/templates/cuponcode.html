@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<!---------------------- Products ----------------------------->
+<div class="brouchers">
+    <ul class="breadcrumb">
+       <li class="breadcrumb-item">
+       <a href="{% url 'PrintHome' %}" style="text-decoration: none; color: black;">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item">
+      <a href="{% url 'ProductViewPage' %}" style="text-decoration: none; color: black;">Products</a>
+      </li>
+      <li class="breadcrumb-item">
+      <span>All Categories</span>
+      </li>
+    </ul>
+</div>
+<div class="content-box">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="element-wrapper">
+            <h3 class="element-header">
+              Categories List
+            </h3>  
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="element-wrapper">
+          <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalToggleLabel">Cupon Form</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="{% url 'addcuponpage' %}" method = "POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Product Name</label>
+                      <select class="form-select" aria-label="Default select example" name="product">
+                          <option selected>Choose Product</option>
+                          {% for product in product %}
+                          <option value="{{product.id}}">{{product.title}}</option>
+                         {% endfor %}
+                        </select>
+                    </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Code</label>
+                        <input type="text" class="form-control" id="slug" aria-describedby="emailHelp" name="code" placeholder="Enter Code">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Discount</label>
+                        <input type="number" class="form-control" id="price" aria-describedby="emailHelp" name="discount" placeholder="Enter Discount">
+                      </div><br>
+                      <div class="form-group">
+                      <button type="submit" name="submit" class="btn btn-primary">submit</button>
+                    </div>
+                </form>
+              </div>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Add Cupon</a>
+        </div>
+      </div>
+    </div>
+</div> 
+ <!------ header section -->
+ <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Product</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Code</th>
+        <th scope="col">Discount (%)</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for cupon in cupon %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td><img src="{{cupon.product.image.url}}" alt="" height="50px" width="60px"></td>
+        <td>{{cupon.product.title}}</td>
+        <td>{{cupon.code}}</td>
+        <td>{{cupon.discount}}</td>
+        <td><button type="submit" class="btn btn-success">View</button>
+            <button type="submit" class="btn btn-warning">Edit</button>
+            <button type="submit" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<div class="controls-below-table">
+    <div class="table-records-pages">
+        <ul>
+            <li><a href="#">Previous</a></li>
+            <li><a class="current" href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock content %}

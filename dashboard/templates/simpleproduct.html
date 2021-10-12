@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <div class="content-box">
+      <div >
+    <form  action="" method="" style="padding: 5px;" >
+        <div class="form-group" style="margin: 5px;">
+          <label >Sub category</label><br>
+        
+          <select name="subcat" class="form-control">
+            <option selected>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <br>
+        <div class="form-group" style="margin: 5px;">
+            <label  >Product name</label>
+            <input type="text" placeholder="name" name="name" class="form-control" >            
+        </div>
+        <div class="form-group" style="margin: 5px;">
+            <label >Inventory</label>
+            <input type="number " placeholder="Inventory" name="inventory" class="form-control">
+        </div>
+        <div class="form-group" style="margin: 5px;">
+            <label>Slug</label>
+            <input type="text" placeholder="slug" name="slug" class="form-control">
+            </div>
+        <div class="form-group" style="margin: 5px;">
+            <label>Description</label>
+          <input type="text" placeholder="description " name="description" class="form-control"> 
+         </div>
+        <div class="form-group" style="margin: 5px; padding: 5px;">
+            <label>Unit price</label>
+            <input  type="number" placeholder="unit price" name="unit_Price" class="form-control">
+        </div>
+        <div class="form-group" style="margin :5px;">
+            <label>quantity</label>
+            <input type="number" placeholder="quantity" name="minimum_quantity" class="form-control">
+        </div>
+        <div class="form-group" style="margin: 5px;">
+            <label>Packing charges</label>
+                <input type="number" placeholder="packing charges"  name="packing_charges" class="form-control">
+            
+        </div>
+        <div class="form-group" style="margin: 5px;"> 
+            <label>Gst</label>
+          <input type="text" placeholder="gst" name="gst" class="form-control">
+                    
+        </div>
+        <div class="form-group" style="margin:5px;">
+            <label>Unit weight</label>
+            <input type="number" placeholder="unit  weight"  name="unit_Weight" class="form-control">
+            
+        </div>
+        <div class="form-group" style="margin: 5px;">
+            <label>Product gsm type</label>
+            <input type="text"  placeholder="product gsm type"  name="product_gsm_type" class="form-control">
+        </div>
+        <div class="form-group" style="margin: 5px;">
+            <label>
+                Volumetric type
+            </label>
+   
+            <select name="product_vol_type" class="form-control" >
+                <option selected>Volumetric</option>
+                <option>Non -Volumetric</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin: 5px;">
+            <input type="file"  name="image" multiple class="form-control" >
+        </div>
+
+
+
+
+
+   
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
+      </div>
+      {% endblock content %}

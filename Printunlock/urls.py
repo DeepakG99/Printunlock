@@ -1,0 +1,33 @@
+from django.urls import path
+from Printunlock import views
+
+urlpatterns = [
+    path("", views.customerindex, name="PrintlookHome"),
+    path("custosignup", views.custosignup, name="CustomerSignupPage"),
+    path("cuslogin", views.cuslogin, name="CustomerLoginPage"),
+    path("cuslogout", views.cuslogout, name="CustomerLogout"),
+    path("otp", views.otp, name="otp"),
+    path("forgotpassword", views.forgotpassword, name="forgotpassword"),
+    path("send_otp", views.send_otp, name="send_otp"),
+    path("categorypage", views.categorycustomer, name="CustomerCategorypage"),
+    path("simpleproductdetail/<int:ids>", views.simpleProductDetail, name="simpleproductdetail"),
+    path("variableproductdetail/<int:ids>", views.variableProductDetail, name="variableproductdetail"),
+    path("groupedproductdetails/<int:ids>", views.GroupProductsDetails, name="groupedproductdetails"),
+    path('subcategory/<int:ids>', views.subcategory_view, name="subcategory"),
+    path('productview/<int:ids>', views.productviewcus, name="prodcutviewcus"),
+    # path('guestlogin', views.guestlogin, name="guestlogin"),
+    # path('guestsignup', views.guestsignup, name="guestsignup"),
+    path('buynow', views.buynow, name="buynow"),
+    # path('addtocart', views.addtocart, name="addtocart"),
+    path('cartpro', views.CartPro, name="cartpro"),
+    # path('removecart', views.removecart, name="removecart"),
+    # path('removeitemcart', views.removeitemcart, name="removeitemcart"),
+    # path('additemcart', views.additemcart, name="additemcart"),
+    path('checkout', views.checkout, name="checkout"),
+    path('cusdash', views.cusdash, name="CustomerDashboard"),
+    path('search', views.search, name="search"),
+    path('cartitem', views.cartitem, name="cartitem"),
+    path('order', views.order, name="order"),
+    path('contact', views.contact, name="contactPage"),
+    path('groupproductsshow', views.GroupProductsShow, name="groupproductshow"),
+]

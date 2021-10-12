@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="brouchers">
+  <ul class="breadcrumb">
+     <li class="breadcrumb-item">
+     <a href="{% url 'PrintHome' %}" style="text-decoration: none; color: black;">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+    <a href="{% url 'ProductViewPage' %}" style="text-decoration: none; color: black;">Products</a>
+    </li>
+    <li class="breadcrumb-item">
+    <span>Add Attributes</span>
+    </li>
+  </ul>
+</div>
+<div class="content-box">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="element-wrapper">
+            <h3 class="element-header">
+              Product Attributes
+            </h3>  
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="product-box">
+    <div class="attribute">
+    <ul>
+      <li><a href="{% url 'productsize' %}" style="text-decoration: none; color:black">Product Size</a></li>
+      <li><a href="{% url 'productcolor' %}" style="text-decoration: none; color:black">Product Color</a></li>
+      <li><a href="{% url 'producttype' %}" style="text-decoration: none; color:black">Paper Type</a></li>
+      <li><a href="{% url 'productquantity' %}" style="text-decoration: none; color:black">Product Quantity</a></li>
+      <li>Paper Side</li>
+      <li>Product Image</li>
+      <li>Add New</li>
+    </ul>
+    </div>
+    <div class="attribute-form">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Product Name</label>
+          <select class="form-select" aria-label="Default select example" name="product">
+              <option selected>Choose Product</option>
+              {% for product in products %}
+              <option value="{{product.id}}">{{product.title}}</option>
+              {% endfor %}
+            </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Product Type</label>
+        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="type" placeholder="Product Type">
+      </div><br>
+      <div class="form-group">
+        <button type="submit" name="submit" class="btn btn-primary">submit</button>
+      </div>
+      </form>
+  </div>
+  </div>
+  </div>
+  {% endblock content %}

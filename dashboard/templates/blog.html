@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<!---------------------- Products ----------------------------->
+<div class="brouchers">
+    <ul class="breadcrumb">
+       <li class="breadcrumb-item">
+       <a href="{% url 'PrintHome' %}" style="text-decoration: none; color: black;">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item">
+      <a href="{% url 'ProductViewPage' %}" style="text-decoration: none; color: black;">Blog</a>
+      </li>
+      <li class="breadcrumb-item">
+      <span>All Blog</span>
+      </li>
+    </ul>
+</div>
+<div class="content-box">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="element-wrapper">
+            <h3 class="element-header">
+              All Blog List
+            </h3>   
+        </div>
+      </div>
+    </div>
+</div> 
+ <!------ header section -->
+ <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Blog Title</th>
+        <th scope="col">Blogger Name</th>
+        <th scope="col">Categories</th>
+        <th scope="col">Desc</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td><img src="{{product.image.url}}" alt="" height="50px" width="60px"></td>
+        <td>{{product.title}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.category.name}}</td>
+        <td>{{product.subcategory.name}}</td>
+        <td>{% for color in color %}
+          {{color.color}}
+          {% endfor %}
+        </td>
+        <td>{% for size in size %}
+             {{size.size}}
+          {% endfor %}
+        </td>
+        <td>{% for quantity in quantity %}
+          {{quantity.quantity}}
+          {% endfor %}
+        </td>
+        <td>{% for type in type %}
+          {{type.type}}
+          {% endfor %}
+        </td>
+        <td><button type="submit" class="btn btn-success">View</button>
+            <button type="submit" class="btn btn-warning">Edit</button>
+            <button type="submit" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<div class="controls-below-table">
+    <div class="table-records-pages">
+        <ul>
+            <li><a href="#">Previous</a></li>
+            <li><a class="current" href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock content %}

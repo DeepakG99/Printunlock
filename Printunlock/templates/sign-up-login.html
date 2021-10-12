@@ -1,0 +1,447 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+<!--    <link rel="stylesheet" href="css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <title>Signup</title>
+</head>
+
+<body>
+
+
+    <div class="max-w-lg mx-auto">
+        <div class="container-fluid">
+            <div class="row get">
+
+                <div class="col-md-6 mob">
+                    <img src="img/desk-p.png" class="img-fluid bannre">
+                    <img src="img/desk-p.png" class="img-fluid bannred">
+                </div>
+                <div class="col-md-6 fore">
+                    <div class="forms">
+                        <ul class="tab-group">
+                            <li class="tab active" id="loginli"><a href="#login">Log In</a></li>
+                            <li class="tab" id="signupli"><a href="#signup">Sign Up</a></li>
+                        </ul>
+                        <form class="px-2 py-2 mt-2" action="sig.php" method="post" id="signup" style="display: none;">
+                            <input type="hidden" placeholder="Username" name="otp" value="1229">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text py-3 px-3 bg-light-gray rounded-md fw-bold py-3" id="basic-addon1" style="height:46px;"><i class="fa fa-envelope" aria-hidden="true"></i>
+
+                                </span>
+                                <input type="email" class="form-control bg-light-gray rounded-md border-none" name="fname" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required="">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text py-2 px-3 bg-light-gray rounded-md fw-bold" id="basic-addon1" style="height:46px;"><svg width="38" height="30" viewBox="0 0 38 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g filter="url(#filter0_d)">
+                                            <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="1" width="32" height="24">
+                                                <rect x="3" y="1" width="32" height="24" fill="white"></rect>
+                                            </mask>
+                                            <g mask="url(#mask0)">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3 1V25H35V1H3Z" fill="#F7FCFF"></path>
+                                                <mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="1" width="32" height="24">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 1V25H35V1H3Z" fill="white"></path>
+                                                </mask>
+                                                <g mask="url(#mask1)">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 1V9H35V1H3Z" fill="#FF8C1A"></path>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 17V25H35V17H3Z" fill="#5EAA22"></path>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15 13C15 15.2091 16.7909 17 19 17C21.2091 17 23 15.2091 23 13C23 10.7909 21.2091 9 19 9C16.7909 9 15 10.7909 15 13ZM22 13C22 14.6569 20.6569 16 19 16C17.3431 16 16 14.6569 16 13C16 11.3431 17.3431 10 19 10C20.6569 10 22 11.3431 22 13Z" fill="#3D58DB"></path>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9945 13.8607L18.4237 16.9813L18.7551 13.8263L17.3283 16.6596L18.5351 13.7258L16.3678 16.0424L18.3524 13.5675L15.6202 15.1796L18.2216 13.364L15.1459 14.1411L18.1535 13.132L14.9835 13.011L18.1535 12.8901L15.1459 11.881L18.2216 12.6581L15.6202 10.8425L18.3524 12.4546L16.3678 9.9797L18.5351 12.2963L17.3283 9.36247L18.7551 12.1958L18.4237 9.04083L18.9945 12.1614L19.5653 9.04083L19.2339 12.1958L20.6608 9.36247L19.4539 12.2963L21.6212 9.9797L19.6366 12.4546L22.3688 10.8425L19.7674 12.6581L22.8431 11.881L19.8355 12.8901L23.0056 13.011L19.8355 13.132L22.8431 14.1411L19.7674 13.364L22.3688 15.1796L19.6366 13.5675L21.6212 16.0424L19.4539 13.7258L20.6608 16.6596L19.2339 13.8263L19.5653 16.9813L18.9945 13.8607Z" fill="#3D58DB"></path>
+                                                </g>
+                                            </g>
+                                            <rect x="3" y="1" width="32" height="24" fill="url(#paint0_linear)" style="mix-blend-mode:overlay"></rect>
+                                            <path d="M5 2H33V0H5V2ZM34 3V23H36V3H34ZM33 24H5V26H33V24ZM4 23V3H2V23H4ZM5 24C4.44772 24 4 23.5523 4 23H2C2 24.6569 3.34315 26 5 26V24ZM34 23C34 23.5523 33.5523 24 33 24V26C34.6569 26 36 24.6569 36 23H34ZM33 2C33.5523 2 34 2.44772 34 3H36C36 1.34315 34.6569 0 33 0V2ZM5 0C3.34315 0 2 1.34314 2 3H4C4 2.44772 4.44771 2 5 2V0Z" fill="black" fill-opacity="0.1" style="mix-blend-mode:multiply"></path>
+                                        </g>
+                                        <defs>
+                                            <filter id="filter0_d" x="0" y="0" width="38" height="30" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+                                                <feOffset dy="2"></feOffset>
+                                                <feGaussianBlur stdDeviation="1.5"></feGaussianBlur>
+                                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"></feColorMatrix>
+                                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feBlend>
+                                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feBlend>
+                                            </filter>
+                                            <linearGradient id="paint0_linear" x1="19" y1="1" x2="19" y2="25" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="white" stop-opacity="0.7"></stop>
+                                                <stop offset="1" stop-opacity="0.3"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                    &nbsp;+91</span>
+                                <input type="text" name="pnumber" minlength="10" maxlength="10" class="form-control bg-light-gray rounded-md" placeholder="Phone number" aria-label="Phone number" aria-describedby="basic-addon1" required="">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text py-3 px-3 bg-light-gray rounded-md fw-bold py-3" id="basic-addon1" style="height:46px;"><svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.2182 4.3168V5.54348C12.5961 5.97357 13.6 7.22091 13.6 8.71072V12.6602C13.6 14.5046 12.0709 16 10.1858 16H3.41504C1.52909 16 0 14.5046 0 12.6602V8.71072C0 7.22091 1.00476 5.97357 2.38183 5.54348V4.3168C2.38996 1.93183 4.36533 0 6.78781 0C9.2428 0 11.2182 1.93183 11.2182 4.3168ZM6.80408 1.39121C8.45429 1.39121 9.7956 2.70295 9.7956 4.31678V5.37094H3.80444V4.30088C3.81257 2.695 5.15388 1.39121 6.80408 1.39121ZM7.51131 11.5639C7.51131 11.9535 7.19428 12.2635 6.79595 12.2635C6.40576 12.2635 6.08872 11.9535 6.08872 11.5639V9.79906C6.08872 9.41747 6.40576 9.10742 6.79595 9.10742C7.19428 9.10742 7.51131 9.41747 7.51131 9.79906V11.5639Z" fill="#CCD0D2"></path>
+                                    </svg>
+                                </span>
+                                <input type="password" name="password" minlength="4" maxlength="4" class="form-control bg-light-gray rounded-md border-none" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required="">
+                            </div>
+                            <button type="submit" name="submit12" class="btn bg-yellow text-center w-full rounded-md py-2.5 fw-bold">Send OTP</button>
+
+                            <!--p class="text-secondary px-2 my-2">Already have an account. <a class="text-dark text-decoration-none" href="signup.php"><b>Log In</b></a></p-->
+                        </form>
+<div id="hide_login_if_otp">
+                        <form class="px-2 py-2 mt-2" action="login.php" method="post" id="login" style="display: block;">
+                            <span id="errormsg"></span>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text py-3 px-3 bg-light-gray rounded-md fw-bold py-3" id="basic-addon1" style="height:46px;"><svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6352 4.23284C10.6352 6.58247 8.75131 8.46649 6.40003 8.46649C4.04955 8.46649 2.16484 6.58247 2.16484 4.23284C2.16484 1.88322 4.04955 0 6.40003 0C8.75131 0 10.6352 1.88322 10.6352 4.23284ZM6.4 16C2.9299 16 0 15.436 0 13.26C0 11.0832 2.94831 10.5391 6.4 10.5391C9.8709 10.5391 12.8 11.1032 12.8 13.2792C12.8 15.456 9.85169 16 6.4 16Z" fill="#CCD0D2"></path>
+                                    </svg>
+                                </span>
+                                <input type="text" class="form-control bg-light-gray rounded-md border-none" placeholder="Username/Email/Phone Number" name="name" aria-label="Username" aria-describedby="basic-addon1" required="">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text py-3 px-3 bg-light-gray rounded-md fw-bold py-3" id="basic-addon1" style="height:46px;"><svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.2182 4.3168V5.54348C12.5961 5.97357 13.6 7.22091 13.6 8.71072V12.6602C13.6 14.5046 12.0709 16 10.1858 16H3.41504C1.52909 16 0 14.5046 0 12.6602V8.71072C0 7.22091 1.00476 5.97357 2.38183 5.54348V4.3168C2.38996 1.93183 4.36533 0 6.78781 0C9.2428 0 11.2182 1.93183 11.2182 4.3168ZM6.80408 1.39121C8.45429 1.39121 9.7956 2.70295 9.7956 4.31678V5.37094H3.80444V4.30088C3.81257 2.695 5.15388 1.39121 6.80408 1.39121ZM7.51131 11.5639C7.51131 11.9535 7.19428 12.2635 6.79595 12.2635C6.40576 12.2635 6.08872 11.9535 6.08872 11.5639V9.79906C6.08872 9.41747 6.40576 9.10742 6.79595 9.10742C7.19428 9.10742 7.51131 9.41747 7.51131 9.79906V11.5639Z" fill="#CCD0D2"></path>
+                                    </svg>
+                                </span>
+                                <input type="password" class="form-control bg-light-gray rounded-md border-none" name="password" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="otp-sec">
+                                <p><a class="login_with_otp">Login with OTP</a></p>
+                            </div>
+                            <button class="btn bg-yellow text-center w-full rounded-md py-2.5 fw-bold">Login</button>
+
+                            <p class="text-secondary px-2 my-2">
+                                <!--b>Create an account. </b><a class="text-dark text-decoration-none" href="signup.php">Sign Up</a--> <a class="text-dark text-decoration-none" href="forget-password.html" style="float:right;">Forgot Password?</a>
+                            </p>
+
+
+                        </form>
+</div>
+<div id="otp_section_open">
+    <form class="px-2 py-2" action="forgot-otp.php" method="post" id="signup">
+            <input type="hidden"  placeholder="Username" name="otp" value="1847">
+            <div class="form-group">
+                <label class="forfr">Enter Your Mobile Number</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text py-2 px-3 bg-light-gray rounded-md fw-bold" id="basic-addon1" style="height:46px;"><svg width="38" height="30" viewBox="0 0 38 30"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d)">
+                            <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="1" width="32"
+                                height="24">
+                                <rect x="3" y="1" width="32" height="24" fill="white" />
+                            </mask>
+                            <g mask="url(#mask0)">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3 1V25H35V1H3Z" fill="#F7FCFF" />
+                                <mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="1" width="32"
+                                    height="24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 1V25H35V1H3Z" fill="white" />
+                                </mask>
+                                <g mask="url(#mask1)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 1V9H35V1H3Z" fill="#FF8C1A" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 17V25H35V17H3Z"
+                                        fill="#5EAA22" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M15 13C15 15.2091 16.7909 17 19 17C21.2091 17 23 15.2091 23 13C23 10.7909 21.2091 9 19 9C16.7909 9 15 10.7909 15 13ZM22 13C22 14.6569 20.6569 16 19 16C17.3431 16 16 14.6569 16 13C16 11.3431 17.3431 10 19 10C20.6569 10 22 11.3431 22 13Z"
+                                        fill="#3D58DB" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M18.9945 13.8607L18.4237 16.9813L18.7551 13.8263L17.3283 16.6596L18.5351 13.7258L16.3678 16.0424L18.3524 13.5675L15.6202 15.1796L18.2216 13.364L15.1459 14.1411L18.1535 13.132L14.9835 13.011L18.1535 12.8901L15.1459 11.881L18.2216 12.6581L15.6202 10.8425L18.3524 12.4546L16.3678 9.9797L18.5351 12.2963L17.3283 9.36247L18.7551 12.1958L18.4237 9.04083L18.9945 12.1614L19.5653 9.04083L19.2339 12.1958L20.6608 9.36247L19.4539 12.2963L21.6212 9.9797L19.6366 12.4546L22.3688 10.8425L19.7674 12.6581L22.8431 11.881L19.8355 12.8901L23.0056 13.011L19.8355 13.132L22.8431 14.1411L19.7674 13.364L22.3688 15.1796L19.6366 13.5675L21.6212 16.0424L19.4539 13.7258L20.6608 16.6596L19.2339 13.8263L19.5653 16.9813L18.9945 13.8607Z"
+                                        fill="#3D58DB" />
+                                </g>
+                            </g>
+                            <rect x="3" y="1" width="32" height="24" fill="url(#paint0_linear)"
+                                style="mix-blend-mode:overlay" />
+                            <path
+                                d="M5 2H33V0H5V2ZM34 3V23H36V3H34ZM33 24H5V26H33V24ZM4 23V3H2V23H4ZM5 24C4.44772 24 4 23.5523 4 23H2C2 24.6569 3.34315 26 5 26V24ZM34 23C34 23.5523 33.5523 24 33 24V26C34.6569 26 36 24.6569 36 23H34ZM33 2C33.5523 2 34 2.44772 34 3H36C36 1.34315 34.6569 0 33 0V2ZM5 0C3.34315 0 2 1.34314 2 3H4C4 2.44772 4.44771 2 5 2V0Z"
+                                fill="black" fill-opacity="0.1" style="mix-blend-mode:multiply" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_d" x="0" y="0" width="38" height="30" filterUnits="userSpaceOnUse"
+                                color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                <feOffset dy="2" />
+                                <feGaussianBlur stdDeviation="1.5" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                            </filter>
+                            <linearGradient id="paint0_linear" x1="19" y1="1" x2="19" y2="25"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="white" stop-opacity="0.7" />
+                                <stop offset="1" stop-opacity="0.3" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    &nbsp;+91</span>
+                <input type="text" name="pnumber" id="mobile" minlength="10" maxlength="10" class="form-control bg-light-gray rounded-md" placeholder="Phone number" aria-label="Phone number"
+                    aria-describedby="basic-addon1" required>
+            </div>
+            </div>
+            <div class="form-group" id="otp_div">
+                <label class="forfr">Enter Your OTP</label>
+            <div class="input-group mb-3">
+                <input type="text" name="otp" minlength="8" maxlength="8" class="form-control bg-light-gray rounded-md" id="otp" placeholder="Enter OTP" aria-label="OTP"
+                    aria-describedby="basic-addon1" required>
+            </div>
+            </div>
+            
+            <div id="sendotp_btn">
+            <button type="button" name="submit12" class="btn bg-yellow text-center w-full rounded-md py-2.5 fw-bold sendotp">Send OTP</button>
+            </div>
+
+            <div id="submitotp_btn">
+            <button type="button" name="submit12" class="btn bg-yellow text-center w-full rounded-md py-2.5 fw-bold">Submit OTP</button>
+            </div>
+            
+            <!--p class="text-secondary px-2 my-2">Already have an account.<a class="text-dark text-decoration-none" href="signup.php"> <b>Log In </b></a></p-->
+        </form>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.tab a').on('click', function(e) {
+                e.preventDefault();
+
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+
+                var href = $(this).attr('href');
+                $('.forms > form').hide();
+                $(href).fadeIn(500);
+            });
+        });
+
+        var ifinvalid = "";
+        if (ifinvalid == 'invalid') {
+            alert('Invalid Password');
+            /*$('#loginli').addClass('active');
+            $('#signupli').removeClass('active');
+             var href = $('#loginli').attr('href');
+                $('.forms > form').hide();
+                $(href).fadeIn(500);*/
+        }
+
+        $('#otp_section_open').hide();
+        $('#hide_login_if_otp').show();
+        $('.login_with_otp').click(function(e){
+        $('#hide_login_if_otp').hide();
+        $('#otp_section_open').show();
+        });
+
+$('#signupli').click(function(e){
+   $('#otp_section_open').hide();
+   $('#hide_login_if_otp').hide();
+});
+$('#loginli').click(function(e){
+   $('#otp_section_open').hide();
+   $('#hide_login_if_otp').show();
+});
+
+        $(document).ready(function(){
+    $('#otp_div').hide();
+    $('#submitotp_btn').hide();
+$('.sendotp').on('click',function(e){
+    var mob = $('#mobile').val();
+    if(mob!='')
+    {
+       $('#otp_div').show();
+       $('#sendotp_btn').hide();
+       $('#submitotp_btn').show();
+    }
+    else
+    {
+        alert('Please enter your valid mobile number');
+    }
+});
+});
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Aeonik';
+        }
+
+        img.img-fluid.bannred {
+            width: 60%;
+        }
+
+        .col-md-6.fore {
+            margin-top: 12%;
+            position: relative;
+        }
+
+        .forms {
+            background: #fff;
+            /*box-shadow: 0 0 3px #000;*/
+            margin: -1px auto;
+            max-width: 500px;
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+        }
+
+        .forms h1 {
+            padding: 0 0 20px 0;
+            font-size: 26px;
+            color: #666;
+            font-weight: lighter;
+            text-align: center;
+        }
+
+        .forms form {
+            padding: 30px;
+        }
+
+        #login {
+            display: none;
+        }
+
+        .forms .tab-group {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            padding-top: 0px;
+        }
+
+        .forms .tab-group:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .forms .tab-group li a {
+            display: block;
+            text-decoration: none;
+            padding: 15px;
+            background: #fff;
+            color: #000;
+            font-size: 20px;
+            float: left;
+            width: 49%;
+            text-align: center;
+            border: 3px solid#03bbf2;
+            -moz-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .forms .tab-group li a:hover {
+            background: #fff;
+            color: #666;
+        }
+
+        .forms .tab-group .active a:focus {
+            background: #03bbf2;
+            color: #000;
+            border-top: 3px solid#03bbf2;
+        }
+
+        .forms .tab-group .active a {
+            background: #03bbf2;
+            color: #000;
+            border-top: 3px solid#03bbf2;
+        }
+
+        .forms input {
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            color: #666;
+            border-radius: 0;
+            margin-bottom: 10px;
+            -moz-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .forms input:focus {
+            outline: 0;
+            border-color: #2e5ed7;
+        }
+
+        .forms label {
+            font-size: 16px;
+            font-weight: normal;
+            color: #666;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .forms .button {
+            border: 0;
+            outline: none;
+            border-radius: 0;
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: #03bbf2;
+            color: #ffffff;
+            cursor: pointer;
+            -moz-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .otp-sec a {
+            font-size: 16px;
+            text-decoration: none;
+            margin: 0 auto 20px !important;
+            display: block;
+            color: #03bbf2;
+        }
+
+        .forms .button:hover,
+        .button:focus {
+            background: #03bbf2;
+        }
+
+        .text-p {
+            text-align: right;
+        }
+
+        .text-p a {
+            color: #1383ea;
+        }
+
+        button.btn.bg-yellow.text-center.w-full.rounded-md.py-2\.5.fw-bold {
+            background: #03bbf2;
+            text-align: center !important;
+            padding-top: 0.7rem !important;
+            padding-bottom: 0.7rem !important;
+            width: 100%;
+            color: #fff
+        }
+    </style>
+    
+</body>
+
+</html>

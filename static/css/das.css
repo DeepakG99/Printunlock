@@ -1,0 +1,456 @@
+body {
+    margin: 0;
+    font-family: "Avenir Next W01", "Lato", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #fcfcfc;
+  }
+#header{
+    width: 100%;
+    border-bottom: 0.8px solid rgb(218, 214, 214);
+    padding: 10px;
+    padding-top: 5px;
+    background-color: hsl(222, 31%, 94%);
+  }
+#header .logo{
+    width: 178px;
+    text-align: left;
+    display: flex;
+    padding-top: 5px;
+}
+#header .logo img{
+    height: 40px;
+    width: 170px;
+}
+#header .profile{
+    text-align: right;
+    width: 600px;
+    display: flex;
+}
+#header .profile .search{
+    margin-top: 2px;
+    height: 40px;
+    width: 250px;
+    background-color: #fafafa;
+    display: flex;
+    border-radius: 30px;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+#header .profile .search input{ 
+   border: none;
+   background-color: #fafafa;
+   height: 30px;
+   border-radius: 30px;
+}
+#header .profile .search button{ 
+    border: none;
+    background-color: #fafafa;
+    height: 30px;
+    border-radius: 30px;
+    font-size: 18px;
+}
+#header .profile .message-box{
+    position: relative;
+    margin-top: 2px;
+    height: 40px;
+    width: 100px;
+    color: blue;
+    text-align: center; 
+    font-size: 25px;
+    margin-left: 20px;
+}
+#header .profile .setting-box{
+    position: relative;
+    margin-top: 2px;
+    height: 40px;
+    width: 50px;
+    text-align: left; 
+    font-size: 25px;
+    color: blue;
+}
+#header .profile .profile-pic{
+    height: 45px;
+    width: 120px;
+    text-align: left; 
+    font-size: 25px;
+}
+.dot {
+    height: 48px;
+    width: 50px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+  }
+  .dot img{
+    height: 48px;
+    width: 50px;  
+  }
+  
+.message-box .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #fff;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+  }
+.message-box:hover .tooltiptext {
+    visibility: visible;
+  }
+ .message-box .tooltiptext .tooldata{
+     color: black;
+     position:relative;
+     display: flex;
+     padding: 10px;
+     border-bottom: 1px solid rgb(202, 199, 199);
+  }
+.message-box .tooltiptext .tooldata h5{
+    color: black;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+.message-box .tooltiptext .tooldata img{
+    height: 50px;
+    width: 55px;
+}
+.message-box .tooltiptext .tooldata h6{
+    color: rgb(26, 26, 235);
+    font-size: 11px;
+    margin-left: 10px;
+    margin-top: -7px;
+}
+.setting-box .setting-hov{
+    visibility: hidden;
+    width: 180px;
+    background-color:blue;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+.setting-box:hover .setting-hov{
+    visibility: visible;
+}
+.setting-box .setting-hov .setting-data{
+    display: flex;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 10px;
+    border-bottom: 0.8px solid rgb(104, 135, 243);
+}
+.setting-box .setting-hov .setting-data h5{
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+.dot .profile-hov{
+    visibility: hidden;
+    width: 250px;
+    background-color:blue;
+    color: #fff;
+    text-align: left;
+    border-radius: 4px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -110px;
+}
+.dot:hover .profile-hov{
+    visibility: visible; 
+}
+.dot .profile-hov .tooldata{
+    color: white;
+    position:relative;
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid rgb(90, 100, 243);
+ }
+.dot .profile-hov .tooldata  h5{
+   color:white;
+   font-size: 22px;
+   margin-left: 10px;
+   margin-top: 5px;
+ }
+ .dot .profile-hov .tooldata img{
+   height: 50px;
+   width: 50px;
+}
+.dot .profile-hov .tooldata  h6{
+   color: white;
+   font-size: 11px;
+   margin-left: 10px;
+   margin-top: -5px;
+}
+.dot .profile-hov .setting-data{
+    display: flex;
+    padding-bottom: 5px;
+    padding-top: 8px;
+    padding-left: 10px;
+    border-bottom: 0.8px solid rgb(84, 118, 240);
+}
+.dot .profile-hov .setting-data h5{
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+.dot .profile-hov .setting-data i{
+    font-size: 18px;
+    margin-top: 12px;
+}
+/*end header style */
+/* start menu style */
+#menu{
+    background-color: #EAEDF4;
+    display: flex;
+}
+#menu .menu-list{
+    width: 200px;
+    background-color: #EAEDF4;
+    border-right: 1px solid rgb(211, 208, 208);
+}
+#menu .menu-list .profile-pics{
+    text-align: center; 
+    font-size: 25px;
+    padding-top: 15px;
+    border-bottom: 1px solid rgb(211, 208, 208);
+    padding-bottom: 10px;
+}
+
+.dots{
+    height: 60px;
+    width: 60px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+  }
+.dots img{
+    height: 60px;
+    width: 60px;  
+  }
+
+.dots .profile-hov{
+    visibility: hidden;
+    width: 250px;
+    background-color:blue;
+    color: #fff;
+    text-align: left;
+    border-radius: 4px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -95px;
+}
+.dots:hover .profile-hov{
+    visibility: visible; 
+}
+.dots .profile-hov .tooldata{
+    color: white;
+    position:relative;
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid rgb(90, 100, 243);
+ }
+.dots .profile-hov .tooldata  h5{
+   color:white;
+   font-size: 22px;
+   margin-left: 10px;
+   margin-top: 5px;
+ }
+.dots .profile-hov .tooldata img{
+   height: 50px;
+   width: 50px;
+}
+.dots .profile-hov .tooldata  h6{
+   color: white;
+   font-size: 11px;
+   margin-left: 10px;
+   margin-top: -5px;
+}
+.dots .profile-hov .setting-data{
+    display: flex;
+    padding-bottom: 5px;
+    padding-top: 8px;
+    padding-left: 10px;
+    border-bottom: 0.8px solid rgb(84, 118, 240);
+}
+.dots .profile-hov .setting-data h5{
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+.dots .profile-hov .setting-data i{
+    font-size: 18px;
+    margin-top: 12px;
+}
+#menu .menu-list .menu-item{
+    padding-top: 10px;
+    padding-left: 30px;
+    display: flex;
+    text-align: center;
+    position: relative;
+}
+#menu .menu-list .menu-item i{
+    font-size: 19px;
+    color: rgb(15, 15, 228);
+}
+#menu .menu-list .menu-item p{
+    margin-left: 15px;
+    font-size: 14px;
+    margin-top: -2px;
+    font-weight: 400;
+}
+#menu .menu-list .menu-items{
+    padding-top: 10px;
+    padding-left: 30px;
+    display: flex;
+    text-align: center;
+    position: relative;
+    margin-top: 35px;
+}
+.menu-items:hover{
+    background-color: rgb(34, 34, 238);
+    color:#FEFEFE;
+}
+#menu .menu-list .menu-items i{
+    font-size: 19px;
+    color: rgb(15, 15, 228);
+}
+#menu .menu-list .menu-items p{
+    margin-left: 15px;
+    font-size: 16px;
+    margin-top: -2px;
+    font-weight: 400;
+}
+.menu-item .profile-hov{
+    visibility: hidden;
+    width: 250px;
+    background-color:blue;
+    color: #fff;
+    text-align: left;
+    border-radius: 2px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: 88px;
+    margin-top: -100px;
+}
+.menu-item:hover .profile-hov{
+    visibility: visible;
+}
+.menu-item .profile-hov .setting-data{
+    display: flex;
+    padding-bottom: 5px;
+    padding-top: 8px;
+    padding-left: 10px;
+    border-bottom: 0.8px solid rgb(84, 118, 240);
+}
+.menu-item .profile-hov .setting-data h5{
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+.menu-item:hover{
+    background-color: blue;
+    color: white;
+}
+.menu-item:hover i{
+    color: white;
+}
+#menu .dash-show{
+    width: 100%;
+    background-color: #EAEDF4; 
+}
+
+#footer{
+    background-color: #EAEDF4;
+    border-top: 1px solid rgb(211, 208, 208); 
+}
+#menu .dash-show .brouchers{
+    margin: 30px;
+    padding: 20px;
+    margin-bottom: 0px;
+}
+#menu .dash-show .content-box{
+    margin-left: 30px;
+    padding: 20px;
+    width: 80%;
+    padding-bottom: 5px;
+    border-bottom:1px solid black;
+}
+#menu .dash-show .content-box h3{
+   margin-left: 10px;
+}
+#menu .dash-show table{
+    margin-left: 50px;
+    width: 80%;
+}
+#menu .dash-show .controls-below-table{
+    width: 80%;
+    text-align: right;
+}
+#menu .dash-show .controls-below-table ul li{
+    overflow: hidden;
+    display: inline;
+    margin-left: 24px;
+    font-size: 18px;
+    font-weight: 500;
+}
+#menu .dash-show .controls-below-table ul li a{
+    text-decoration: none;
+    color: black;
+}
+#menu .dash-show .form-box{
+    margin-left: 40px;
+    width: 80%;
+    margin-bottom: 30px;
+}
+#menu .dash-show .product-box{
+    margin-left: 40px;
+    width: 80%;
+    margin-bottom: 30px;
+    display: flex;
+}
+#menu .dash-show .product-box .attribute{
+    padding: 15px;
+    border-right: 1px solid black;
+}
+#menu .dash-show .product-box .attribute ul li{
+    overflow: hidden;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+#menu .dash-show .product-box .attribute-form{
+    margin: 50px;
+}

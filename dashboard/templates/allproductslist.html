@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% block content %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container" style="justify-content: center; align-items: center;">
+  <div class="element-wrapper">
+    <h3 class="element-header">
+      Select product type
+    </h3>
+</div>
+<select id="selectopt">
+    <option selected value="simpleproduct">
+        Simple product
+    </option>
+    <option value="variableproduct">
+        Variable product
+    </option>
+    <option value="groupedproduct">Grouped product</option>
+</select>
+<br>
+<br>
+<button class="btn btn-primary" onclick="show_func()">show</button>
+</div>
+
+<!-- simple product list  -->
+<div style="display: none; margin: 20px;" id="simpleproducts" >
+    <div class="content-box">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="element-wrapper">
+                <h3 class="element-header">
+                  Simple Product List
+                </h3>
+            </div>
+          </div>
+        </div>
+    </div>
+     <!------ header section -->
+     <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">S. No.</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Categories</th>
+            <th scope="col">Subcategories</th>
+            <th scope="col">Color</th>
+            <th scope="col">Size</th>
+            <th scope="col">Inventory</th>
+
+            <th scope="col">Created Date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in sim %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{ i.name }}</td>
+            <td>{{ i.final_Price }}</td>
+            <td>{{ i.subcategory.category.name }}</td>
+            <td>{{ i.subcategory.name }}</td>
+            <td>{{ i.color }}
+            </td>
+            <td>
+                {{ i.size }}
+            </td>
+            <td>
+                {{ i.inventory }}
+            </td>
+            <td>
+                {{ i.create_date }}
+            </td>
+            <td>
+                <button type="submit" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-danger"><a  href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></button>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+</div>
+<!-- end -->
+
+<!-- variable product list  -->
+<div style="display: none; margin: 20px;" id="variableproducts" >
+  <div class="content-box">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="element-wrapper">
+              <h3 class="element-header">
+                Variable Product List
+              </h3>
+          </div>
+        </div>
+      </div>
+  </div>
+   <!------ header section -->
+   <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">S. No.</th>
+
+          <th scope="col">Product Name</th>
+
+          <th scope="col">Categories</th>
+          <th scope="col">Subcategories</th>
+
+
+          <th scope="col">Slug</th>
+          <th scope="col">Create Date</th>
+        </tr>
+      </thead>
+      <tbody>
+            {% for i in var %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{ i.name }}</td>
+          <td>{{ i.subcategory.category.name }}</td>
+          <td>{{ i.subcategory.name }}</td>
+          <td>{{ i.slug }}
+          </td>
+          <td>
+            {{ i.create_date }}
+          </td>
+
+            <td><a  href="{% url 'variableattributes' i.id %}"><button type="submit" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i>View</button></a>
+          </td>
+        </tr>
+{% endfor %}
+      </tbody>
+    </table>
+</div>
+<!-- end -->
+
+<!-- Grouped product list  -->
+<div style="display: none; margin: 20px;" id="groupedproducts" >
+  <div class="content-box">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="element-wrapper">
+              <h3 class="element-header">
+                Grouped Product List
+              </h3>
+          </div>
+        </div>
+      </div>
+  </div>
+   <!------ header section -->
+   <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">S. No.</th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Slug</th>
+          <th scope="col">Description</th>
+          <th scope="col">Volume Type</th>
+          <th scope="col">Unit Weight</th>
+          <th scope="col">Packing Charges</th>
+          <th scope="col">Gst %</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in grp %}
+           {% for j in sp %}
+               {% for k in vp %}
+                   {% if i.pid1 == j.uniqueid|add:"0" and i.pid2 == k.uniqueid|add:"0"  %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+
+          <td>{{ j.simple.name }} + {{ k.variable.product.name }}</td>
+          <td>{{ i.final_price }}</td>
+          <td>{{ i.slug }}</td>
+          <td>{{ i.description }}</td>
+          <td>{{ i.volume_type }}</td>
+            <td>{{ i.unit_weight }}</td>
+          <td>
+            {{ i.packing_charge }}
+          </td>
+          <td>
+              {{ i.gst }}
+
+          </td>
+          <td><button type="submit" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
+              <button type="submit" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-danger"><a  href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></button>
+          </td>
+        </tr>
+                   {% endif %}
+                   {% endfor %}
+               {% endfor %}
+{% endfor %}
+      </tbody>
+    </table>
+</div>
+<!-- end -->
+
+<script type="text/javascript">
+function show_func(){
+  var selectopt=document.getElementById("selectopt")
+  var selectedopt=selectopt.options[selectopt.selectedIndex].value
+  var simplepdt=document.getElementById("simpleproducts")
+  var variablepdt=document.getElementById("variableproducts")
+  var groupedpdt=document.getElementById("groupedproducts")
+
+  if(selectedopt=="simpleproduct"){
+simplepdt.style.display="block"
+variablepdt.style.display="none"
+groupedpdt.style.display="none"
+
+  }
+  if(selectedopt=="variableproduct"){
+simplepdt.style.display="none"
+variablepdt.style.display="block"
+groupedpdt.style.display="none"
+
+  }
+  if(selectedopt=="groupedproduct"){
+simplepdt.style.display="none"
+variablepdt.style.display="none"
+groupedpdt.style.display="block"
+
+  }
+
+
+
+
+}
+</script>
+{% endblock  %}

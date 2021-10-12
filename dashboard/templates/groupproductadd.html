@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <form  action="{% url 'groupedproducts' ids %}" method="post" style="padding: 5px;" >
+
+
+{% csrf_token %}
+        <div class="form-group" style="margin: 1px;" >
+            <input type="text" placeholder="slug" name="slug" class="form-control">
+            </div>
+        <div class="form-group" style="margin: 1px;">
+          <input type="text" placeholder="description " name="description" class="form-control">
+         </div>
+
+
+     <div class="form-group" style="margin :1px;">
+            <input type="number" placeholder="New Price" name="final_price" class="form-control">
+        </div>
+        <div class="form-group" style="margin: 1px;">
+                <input type="number" placeholder="packing charges"  name="packing_charges" class="form-control">
+
+        </div>
+        <div class="form-group" style="margin: 1px;">
+          <input type="text" placeholder="gst" name="gst" class="form-control">
+
+        </div>
+        <div class="form-group" style="margin:1px;">
+            <input type="number" placeholder="unit  weight"  name="unit_weight" class="form-control">
+
+        </div>
+
+
+        <div class="form-group" style="margin: 1px;">
+            <input type="text"  placeholder="product margin"  name="product_margin" class="form-control">
+        </div>
+        <div class="form-group" style="margin: 1px;">
+            <select name="volume_type"  >
+            <option selected>Voltype</option>
+
+              <option value="Non -Volumetric">Non -Volumetric</option>
+                <option value="Volumetric">Volumetric</option>
+
+            </select>
+        </div>
+
+
+
+
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      {% endblock content %}

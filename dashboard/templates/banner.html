@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<!---------------------- Products ----------------------------->
+<div class="brouchers">
+    <ul class="breadcrumb">
+       <li class="breadcrumb-item">
+       <a href="{% url 'PrintHome' %}" style="text-decoration: none; color: black;">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item">
+      <a href="" style="text-decoration: none; color: black;">Products</a>
+      </li>
+      <li class="breadcrumb-item">
+      <span>All Categories</span>
+      </li>
+    </ul>
+</div>
+<div class="content-box">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="element-wrapper">
+            <h3 class="element-header">
+              Banner List
+            </h3>  
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="element-wrapper">
+          <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalToggleLabel">Banner Form</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="{% url  'AddbannerPage' %}" method = "POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Banner Name</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Banner Name">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlFile1">Upload Image</label><br>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+                      </div><br>
+                      <div class="form-group">
+                      <button type="submit" name="submit" class="btn btn-primary">submit</button>
+                    </div>
+                </form>
+              </div>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Add Banner</a>
+        </div>
+      </div>
+    </div>
+</div> 
+ <!------ header section -->
+ <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Banner</th>
+        <th scope="col">Banner Name</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for banner in banner %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td><img src="{{banner.bannerImage.url}}" alt="" height="50px" width="60px"></td>
+        <td>{{banner.bannerTitle}}</td>
+        <td><button type="submit" class="btn btn-success">View</button>
+            <button type="submit" class="btn btn-warning">Edit</button>
+            <button type="submit" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<div class="controls-below-table">
+    <div class="table-records-pages">
+        <ul>
+            <li><a href="#">Previous</a></li>
+            <li><a class="current" href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock content %}

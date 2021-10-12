@@ -1,0 +1,250 @@
+{% extends "customerbase.html" %}
+{% block content %} 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var amount;
+        var total = 0;
+        var itemcount;
+        var totalquantity = 0;
+        var totalweight = 0;
+        var gstamount= 0;
+        var gst;
+        var packaging;
+        var charge = 0;
+        var grandamout = 0;
+        var grandtotal = 0;
+        $('.checkout-qty #quantity').each(function(){
+             itemcount = $(this).val();
+             totalquantity+= parseInt(itemcount);
+             totalweight = parseFloat(totalquantity) * 6.25/1000;
+             if (totalquantity <= 50){
+                  packaging = 10;
+             }
+             else{
+                packaging = 20;
+             }
+             charge = parseFloat(packaging)
+             $('#packcharge').text(charge + ".0");
+             $('#packcharge1').val(charge)
+        });
+        $('.checkout-total #subtotal').each(function(){
+            amount = $(this).val();
+            total+= parseInt(amount);
+            $('#totalamount').text(total + ".00");
+            $('#totalamount1').val(total)
+        });
+        $('#totalamount').each(function(){
+             gst = $(this).html();
+             gstamount= parseInt(gst)* 12/100;
+             grandamount = parseInt(gst)+parseInt(gstamount)
+            $('#gstamount').text(gstamount);
+            $('#gstamount1').val(gstamount)
+            $('#grandamount').val(grandamount)
+        }); 
+        var package = $('#packcharge').html();
+        var gdamount = $('#grandamount').val();
+        grandtotal = parseInt(package)+parseInt(gdamount)
+        $('#grandtotal').text(grandtotal +".00")
+        $('#grandtotal1').val(grandtotal)
+    });
+</script>
+<script>
+    $(document).ready(function() {
+
+        $(".firstname").on("input",function(){
+
+            $(".firstname").not($(this)).val($(this).val());
+
+        })
+        $(".lastname").on("input",function(){
+
+            $(".lastname").not($(this)).val($(this).val());
+        })
+        $(".email").on("input",function(){
+
+           $(".email").not($(this)).val($(this).val());
+        })
+        $(".phone").on("input",function(){
+
+          $(".phone").not($(this)).val($(this).val());
+        })
+        $(".address").on("input",function(){
+
+           $(".address").not($(this)).val($(this).val());
+        })
+        $(".city").on("input",function(){
+
+            $(".city").not($(this)).val($(this).val());
+        })
+        $(".town").on("input",function(){
+
+           $(".town").not($(this)).val($(this).val());
+        })
+        $(".pincode").on("input",function(){
+
+              $(".pincode").not($(this)).val($(this).val());
+        }) 
+    })
+    </script>
+    <section class="checkout-sec">
+        <h2>Checkout</h2>
+        <div class="checkout-content-main">
+            <div class="checkout-content">
+                <p><a href="#">Login</a> or continue to shop as guest</p>
+                <h3>Billing Address</h3>
+                <div class="cmn-input">
+                    <input type="text" placeholder="First Name*" name="firstname" class="firstname" />
+                    <input type="text" placeholder="Last Name*" name="lastname" class="lastname" />
+                </div>
+                <input type="email" placeholder="Email Address*" name="email" class="email" />
+                <input type="text" placeholder="Phone Number*" name="phone" class="phone" />
+                <select id="country" name="country">
+                    <option value="India" class="country">India</option>
+                </select>
+                <input type="text" placeholder="Address*" name="address" class="address">
+                <input type="text" placeholder="City*" name="city" class="city">
+                <div class="cmn-input">
+                    <input type="text" placeholder="Town/Suburb*" name="town" class="town">
+                    <input type="text" placeholder="Zip/Postal Code*" name="pincode" class="pincode">
+                </div>
+                <div class="ship-add">
+                    <h4>Shipping Address </h4>
+                    <div class="ship-add-in">
+                        <input type="checkbox" id="shipping-address" name="shipping" value="shipping" checked>
+                        <label for="shipping">Same as Billing Address</label>
+                    </div>
+                    <div class="ship-main" id="ship_change">
+                        <div class="checkout-content shipping-cntnt" id="ship-cntnt-main">
+                            <div class="cmn-input">
+                                <input type="text" placeholder="First Name*">
+                                <input type="text" placeholder="Last Name*">
+                            </div>
+                            <input type="email" placeholder="Email Address*">
+                            <input type="text" placeholder="Phone Number*">
+                            <select id="country" name="country">
+                                <option value="India">India</option>
+                            </select>
+                            <input type="text" placeholder="Address*">
+                            <input type="text" placeholder="City*">
+                            <div class="cmn-input">
+                                <input type="text" placeholder="Town/Suburb*">
+                                <input type="text" placeholder="Zip/Postal Code*">
+                            </div>
+
+                        </div>
+                    
+                    </div>
+                </div>
+
+            </div>
+            <div class="checkout-content btwn">
+                <form class="shipping">
+                    <h3>Select Shipping Method</h3>
+                      <input type="radio" id="html" name="fav_language" value="HTML">
+                     <label>Standard Shipping</label><br>
+                      <input type="radio" id="css" name="fav_language" value="CSS">
+                      <label>Express Shipping</label><br>  
+                </form>
+
+                <h3>Promo code</h3>
+                <div class="promo-code"><input type="text" placeholder="Enter Code">
+                    <button class="apply-btn">Apply</button>
+                </div>
+                <div class="check-gst-inner">
+                    <div class="check-gst">
+                        <input type="checkbox" id="gst" name="gst" value="gst">
+                        <label for="gst">GST</label>
+                    </div>
+                    <div class="place-gst"><input type="text" placeholder="GST Number"></div>
+                    <div class="place-gst"><input type="text" placeholder="Registered Address"></div>
+                    <div class="place-gst"><input type="text" placeholder="Registered Name"></div>
+                </div>
+            </div>
+            <div class="checkout-content last">
+                <h3>Review Order</h3>
+                <div class="checkout-product head-prdct">
+                    <h3 class="item-sec">Item</h3>
+                    <h3 class="qty-sec">Qty</h3>
+                    <h3 class="total-sec">Total</h3>
+                </div>
+                {% for items in item %}
+                <div class="checkout-product prd-pd">
+                    <div class="checkout-item">
+                        <img src="{{items.items.product.image.url}}" width="50px" height="50px">
+                        <!-- <p>{{item.cart_id.product.category.name}}</p> -->
+                        <p>{{items.items.product.title}}</p>
+                    </div>
+                    <div class="checkout-qty pd-p">
+                        <p>{{items.items.quantity}}</p>
+                        <input hidden type="text" value="{{items.items.quantity}}" id="quantity">
+                    </div>
+                    <div class="checkout-total pd-p">
+                        <p>RS:{{items.items.costprice}}</p>
+                        <input hidden type="text" value="{{items.items.costprice}}" id="subtotal">
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="subtotal pd-p">
+                    <p>Subtotal</p>
+                    <span id="totalamount"></span>
+                </div>
+                <div class="gst-sec pd-p">
+                    <p>GST</p>
+                    <p id="gstamount"></p>
+                </div>
+                <input hidden type="text" id="grandamount"></input>
+                <div class="gst-sec pd-p">
+                    <p hidden id="packcharge"></p>
+                </div>
+                <div class="subtotal pd-p">
+                    <h3>Grand Total</h3>
+                    <p id="grandtotal"></p>
+                </div>
+                <form action="{% url 'order' %}" method="POST">
+                    {% csrf_token %}
+                  <input hidden type="text" placeholder="First Name*" name="firstname" class="firstname"  required />
+                  <input hidden type="text" placeholder="Last Name*" name="lastname" class="lastname" required />
+                  <input hidden type="email" placeholder="Email Address*" name="email" class="email" required/>
+                  <input hidden type="text" placeholder="Phone Number*" name="phone" class="phone" required />
+                  <select hidden id="country" name="country">
+                      <option value="India" class="country">India</option>
+                  </select>
+                  <input hidden type="text" placeholder="Address*" name="address" class="address" required>
+                  <input hidden type="text" placeholder="City*" name="city" class="city">
+                  <input hidden type="text" placeholder="town*" name="town" class="town">
+                  <input hidden type="number" placeholder="Zip/Postal Code*" name="pincode" class="pincode" required>
+                   {% for items in item %}
+                   <input hidden type="text" name="prid" value="{{items.items.id}}" required>
+                   {% endfor %}
+                   <input  hidden type="text" name="subtotal" id="totalamount1" required>
+                   <input hidden type="text" name="gstamount" id="gstamount1" required>
+                   <input hidden type="text" name="packaging" id="packcharge1" required>
+                   <input hidden type="text" name="grandtotal" id="grandtotal1" required>
+                   <button type="submit" class="process-btn" name="submit">Process order</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        $('.place-gst').css('display', 'none');
+        $('#gst').click(function(e) {
+            if ($('#gst').prop('checked') == true) {
+                $('.place-gst').css('display', 'block');
+            } else {
+                $('.place-gst').css('display', 'none');
+            }
+        });
+    </script>
+    
+     <script>
+        $('#ship_change').hide();
+        $('#shipping-address').click(function(e) {
+            if ($('#shipping-address').prop('checked') == true) {
+                $('#ship_change').hide();
+            } else {
+                $('#ship_change').show();
+            }
+        });
+    </script>
+{% endblock content %}

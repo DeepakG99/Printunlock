@@ -1,0 +1,733 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block body %}
+    <section class="offer-sec" id="main-banner">
+        <div class="container">
+            <div class="slider center">
+                {% for i in banner %}
+                <div class="slide">
+                    <div class="cl"><img src="/media/{{ i.bannerImage }}">
+                        <div class="ban-txt">
+                            <p>Print Online</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="gift-cate">
+        <div class="container">
+            <h2 class="main-head">Shop By Category</h2>
+            <div class="gift-cate-sec">
+                {% for i in trendcate %}
+                <div class="gift-cate-inr">
+                    <img src="/media/{{ i.category.image }}" title="rakhi" alt="rakhi" height="250px" width="250px">
+                    <p>{{ i.category.name }}</p>
+                    <div class="product-overlay"><a href="#">
+                        </a>
+                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    <section class="icon-sec">
+        <div class="icon-sec-outer">
+            <div class="icon-sec-inner">
+                <img src="img/icon1.png" alt="">
+                <h3>100% satisfaction Level</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <div class="icon-sec-inner">
+                <img src="img/icon2.png" alt="">
+                <h3>100% satisfaction Level</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <div class="icon-sec-inner">
+                <img src="img/icon3.png" alt="">
+                <h3>100% satisfaction Level</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="best-seller-sec">
+        <div class="container">
+            <h2 class="main-head">Best Seller</h2>
+            <div class="best-seller-inner">
+                <div class="best-seller-inner-box">
+                    <div class="best-seller-bg">
+                        <img src="img/product.png" alt="" title="">
+                        <div class="best-overlay-box"></div>
+                    </div>
+                    <div class="best-txt">
+                        <h3>Rakhi</h3>
+                    </div>
+                    <div class="product-overlay"><a href="#">
+                        </a>
+                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+                <div class="best-seller-inner-box">
+                    <div class="best-seller-bg">
+                        <img src="img/p.jpg" alt="" title="">
+                        <div class="best-overlay-box"></div>
+                    </div>
+                    <div class="best-txt">
+                        <h3>Party</h3>
+                    </div>
+                    <div class="product-overlay"><a href="#">
+                        </a>
+                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+                <div class="best-seller-inner-box">
+                    <div class="best-seller-bg">
+                        <img src="img/p2.jpg" alt="" title="">
+                        <div class="best-overlay-box"></div>
+                    </div>
+                    <div class="best-txt">
+                        <h3>Birthday</h3>
+                    </div>
+                    <div class="product-overlay"><a href="#">
+                        </a>
+                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+                <div class="best-seller-inner-box">
+                    <div class="best-seller-bg">
+                        <img src="img/p4.jpg" alt="" title="">
+                        <div class="best-overlay-box"></div>
+                    </div>
+                    <div class="best-txt">
+                        <h3>Anniversary</h3>
+                    </div>
+                    <div class="product-overlay"><a href="#">
+                        </a>
+                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+                <div class="best-seller-inner-box mg-tp">
+                    <div class="best-seller-bg">
+                        <img src="img/p4.jpg" alt="" title="">
+                        <div class="best-overlay-box"></div>
+                    </div>
+                    <div class="best-txt">
+                        <h3>Anniversary</h3>
+                    </div>
+                    <div class="product-overlay"><a href="#">
+                        </a>
+                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+                <div class="best-seller-inner-box mg-tp">
+                    <div class="best-seller-bg">
+                        <img src="img/p4.jpg" alt="" title="">
+                        <div class="best-overlay-box"></div>
+                    </div>
+                    <div class="best-txt">
+                        <h3>Anniversary</h3>
+                    </div>
+                    <div class="product-overlay"><a href="#">
+                        </a>
+                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+                <div class="best-seller-inner-box mg-tp">
+                    <div class="best-seller-bg">
+                        <img src="img/p4.jpg" alt="" title="">
+                        <div class="best-overlay-box"></div>
+                    </div>
+                    <div class="best-txt">
+                        <h3>Anniversary</h3>
+                    </div>
+                    <div class="product-overlay"><a href="#">
+                        </a>
+                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+                <div class="best-seller-inner-box mg-tp">
+                    <div class="best-seller-bg">
+                        <img src="img/p4.jpg" alt="" title="">
+                        <div class="best-overlay-box"></div>
+                    </div>
+                    <div class="best-txt">
+                        <h3>Anniversary</h3>
+                    </div>
+                    <div class="product-overlay"><a href="#">
+                        </a>
+                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                        </a>
+                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<!--
+    <section class="offer-sec">
+        <div class="container">
+            <h2 class="main-head">Best Offers</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <div class="slider center">
+                <div class="slide">
+                    <div class="cl"><img src="img/best-product3.png">
+                        <div class="ban-txt">
+                            <p>Wedding Cards</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="cl"><img src="img/best-product1.png">
+                         <div class="ban-txt">
+                            <p>Wedding Cards</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                    <div class="slide">
+                        <div class="cl"><img src="img/best-product3.png">
+                             <div class="ban-txt">
+                                <p>Wedding Cards</p>
+                                <a href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <a href="" class="b-ofr">View More</a>
+        </div>
+    </section>
+-->
+
+
+
+     <section class="offer-sec main-offer" id="main-banner">
+        <div class="container">
+            <h2 class="main-head">Best Offers</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <div class="slider center">
+                <div class="slide">
+                    <div class="cl"><img src="img/best-product3.png">
+                        <div class="ban-txt">
+                            <p>Print Online</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="cl"><img src="img/best-product1.png">
+                        <div class="ban-txt">
+                            <p>Photo Gifts</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="cl"><img src="img/best-product3.png">
+                        <div class="ban-txt">
+                            <p>Wedding Cards</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="new-lauch-sec">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <h2 class="main-head">New Launches</h2>
+                </div>
+                <div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/product.png" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/product.png" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p4.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p4.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="controls pull-right hidden-xs">
+                        <a class="left" href="#carousel-example-generic" data-slide="prev"><i class="fa fa-angle-left" aria-hidden="true"></i>
+                        </a>
+                        <a class="right" href="#carousel-example-generic" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!--
+                <div id="carousel-example-generic1" class="carousel slide hidden-xs" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/product.png" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/product.png" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p4.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p4.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="img/p.jpg" class="img-responsive" alt="a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="controls pull-right hidden-xs">
+                        <a class="left" href="#carousel-example-generic1" data-slide="prev"><i class="fa fa-angle-left" aria-hidden="true"></i>
+                        </a>
+                        <a class="right" href="#carousel-example-generic1" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+-->
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="gallery-product">
+        <div class="container gal-container">
+            <div class="row">
+                <h2 class="main-head">Trending Products</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 first-cont">
+                    <div class="gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#g1">
+                                <img src="img/g1.jpg">
+                            </a>
+                            <div class="modal fade" id="g1" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="img/g1.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 Second-cont">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#g3">
+                                        <img src="img/g3.jpg">
+                                    </a>
+                                    <div class="modal fade" id="g3" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="img/g3.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 pd-lft">
+                            <div class="gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#g3">
+                                        <img src="img/g3.jpg">
+                                    </a>
+                                    <div class="modal fade" id="g3" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="img/g3.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#g4">
+                                        <img src="img/g4.jpg">
+                                    </a>
+                                    <div class="modal fade" id="g4" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="img/g4.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="logo-sec-corp">
+        <div class="container">
+            <div class="customer-logos slider">
+                <div class="slide"><img src="img/logo1.jpg"></div>
+                <div class="slide"><img src="img/logo2.jpg"></div>
+                <div class="slide"><img src="img/logo3.jpg"></div>
+                <div class="slide"><img src="img/logo4.jpg"></div>
+                <div class="slide"><img src="img/logo5.jpg"></div>
+                <div class="slide"><img src="img/logo6.jpg"></div>
+                <div class="slide"><img src="img/logo7.jpg"></div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="testimonial text-center">
+        <div class="container content">
+            <h2 class="main-head">Happy Clients</h2>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="item item0 active">
+                        <div class="thumbnail adjust1">
+                            <div class="caption">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley,</p>
+                                <h3>bunny denoza</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item item1">
+                        <div class="thumbnail adjust1">
+                            <div class="caption">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley,</p>
+                                <h3>Sunny denoza</h3>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item item2">
+                        <div class="thumbnail adjust1">
+                            <div class="caption">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley,</p>
+                                <h3>Sunny denoza</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active dot"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1" class="dot"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2" class="dot"></li>
+                </ol>
+                <!--
+
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                 <i class="fal fa-angle-left"></i> </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <i class="fal fa-angle-right"></i> </a>
+-->
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="blog-sec">
+        <div class='container'>
+            <h2 class="main-head">From the Blog</h2>
+            <div class="slick-carousel">
+                <div class="blog-cntnt">
+                    <date>25.03.2021</date>
+                    <h4>Lorem ipsum</h4>
+                    <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying </p>
+                    <div class="img-client"><img src="img/client.png">by Jennifer Freeman</div>
+                </div>
+                <div class="blog-cntnt">
+                    <date>25.03.2021</date>
+                    <h4>Lorem ipsum</h4>
+                    <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying </p>
+                    <div class="img-client"><img src="img/client.png">by Jennifer Freeman</div>
+                </div>
+                <div class="blog-cntnt">
+                    <date>25.03.2021</date>
+                    <h4>Lorem ipsum</h4>
+                    <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying </p>
+                    <div class="img-client"><img src="img/client.png">by Jennifer Freeman</div>
+                </div>
+                <div class="blog-cntnt">
+                    <date>25.03.2021</date>
+                    <h4>Lorem ipsum</h4>
+                    <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying </p>
+                    <div class="img-client"><img src="img/client.png">by Jennifer Freeman</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-content">
+        <div class="footer-content-inner">
+            <h4>Send Flowers Online with Print Unlock</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <h4>Send Flowers Online with Print Unlock</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <h4>Send Flowers Online with Print Unlock</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+    </section>
+
+
+<script>
+    var $st = $('.pagination');
+    var $slickEl = $('.center');
+
+    $slickEl.on('init reInit afterChange click', function(event, slick, currentSlide, nextSlide) {
+        var i = (currentSlide ? currentSlide : 0) + 1;
+        $st.text(i + ' of ' + slick.slideCount);
+    });
+
+    $slickEl.slick({
+        centerMode: true,
+        centerPadding: '200px',
+        slidesToShow: 1,
+        focusOnSelect: true,
+        dots: false,
+        infinite: true,
+        responsive: [{
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+</script>
+
+
+<!--logo slider--->
+<script>
+    $(document).ready(function() {
+        $('.customer-logos').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+    });
+</script>
+
+<script>
+    $('.slick-carousel').slick({
+        infinite: true,
+        slidesToShow: 3, // Shows a three slides at a time
+        slidesToScroll: 1, // When you click an arrow, it scrolls 1 slide at a time
+        arrows: true, // Adds arrows to sides of slider
+        dots: true // Adds the dots on the bottom
+    });
+</script>
+
+
+{% endblock body %}

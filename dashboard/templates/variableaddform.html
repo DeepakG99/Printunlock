@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+    body {
+    margin: 0;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5385;
+    color: #333;
+    text-align: left;
+    background-color: #f5f5f5
+}
+
+.mt-50 {
+    margin-top: 50px
+}
+
+.mb-50 {
+    margin-bottom: 50px
+}
+
+.bg-teal-400 {
+    background-color: #26a69a
+}
+
+a {
+    text-decoration: none !important
+}
+
+.fa {
+    color: red
+}
+    </style>
+<div class="brouchers">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#" style="text-decoration: none; color: black;">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="#" style="text-decoration: none; color: black;">Products</a>
+    </li>
+    <li class="breadcrumb-item">
+      <span>Add Variable Products</span>
+    </li>
+  </ul>
+</div>
+<div class="content-box">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="element-wrapper">
+        <h3 class="element-header">
+          Step 2:
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+   <div class="container d-flex justify-content-center  mb-50">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card card-body">
+                <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                    <div class="mr-2 mb-3 mb-lg-0"> <img src="/media/{{ img.image }}" width="150" height="150" alt=""> </div>
+                    <div class="media-body">
+                        <h6 class="media-title font-weight-semibold"> <a href="#" data-abc="true">{{ prod.name }}</a> </h6>
+
+                        <p class="mb-3">{{ prod.desc }}</p>
+                        <ul class="list-inline list-inline-dotted mb-0">
+                            <li class="list-inline-item"><a href="#" data-abc="true">{{ prod.subcategory.name }}</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                        <h4 class="mb-0 font-weight-semibold">Inventory</h4>
+
+                        <div class="text-muted">{{ prod.inventory }}</div> <button class="btn btn-primary mt-4 text-white"  data-bs-toggle="modal" href="#exampleModalToggleatribute" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 100px" type="button"><i class="icon-cart-add mr-2"></i> Add Attributes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+      <div class="col-sm-12">
+          <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">GsmType</th>
+        <th scope="col">Product Type</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Product Cost</th>
+        <th scope="col">Product Margin</th>
+        <th scope="col">Packing Charge</th>
+        <th scope="col">GST %</th>
+        <th scope="col">GST Rupees</th>
+        <th scope="col">Unit Weight</th>
+        <th scope="col">Total Weight</th>
+        <th scope="col">Size</th>
+        <th scope="col">Color</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for  i in attribute %}
+          <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ i.product.name }}</td>
+      <td>{{ i.quantity }}</td>
+      <td>{{ i.gsm_type.title }}</td>
+      <td>{{ i.volume_type.volumetype }}</td>
+      <td>{{ i.unit_Cost_price }}</td>
+      <td>{{ product_cost_price }}</td>
+      <td>{{ i.product_margin }}</td>
+      <td>{{ i.packing_charge }}</td>
+      <td>{{ i.gst }}</td>
+      <td>{{ gstrupee }}</td>
+      <td>{{ i.unit_weight }}</td>
+      <td>{{ total_weight }}</td>
+      <td>{{ i.size }}</td>
+      <td>{{ i.color }}</td>
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+      </div>
+
+  </div>
+</div>
+     <div class="modal fade" id="exampleModalToggleatribute" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Attributes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form action="{% url  'variableattributes' ids %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="row">
+               <div class="col-lg-4">
+                     <div class="form-group">
+                <label for="exampleInputEmail1">One Unit Price:</label>
+                <input type="number" class="form-control" id="name" aria-describedby="emailHelp" name="unit_Cost_price" placeholder="one unit price">
+              </div>
+          <div class="form-group">
+                <label for="exampleInputEmail1">Quantity:</label>
+                <input type="number" class="form-control" id="name" aria-describedby="emailHelp" name="quantity" placeholder="Enter Quantity">
+              </div>
+           <div class="form-group">
+                <label for="exampleInputEmail1">Packing Charge:</label>
+                <input type="number" class="form-control" id="name" aria-describedby="emailHelp" name="packing_charge" placeholder="Enter Packing Charge">
+              </div>
+{#          <div class="form-group">#}
+{#                <label for="exampleInputEmail1">product_margin:</label>#}
+{#                <input type="number" class="form-control" id="name" aria-describedby="emailHelp" name="product_margin" placeholder="Enter Product margin">#}
+{#              </div>#}
+
+
+               </div>
+            <div class="col-lg-4">
+                 <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Select Gsm Type</label><br>
+            <select name="gsm_type" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in gsm %}
+                        <option value="{{ i.id }}">{{ i.title }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+             <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Select Volume type Type</label><br>
+            <select name="volume_type" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in vol %}
+                        <option value="{{ i.id }}">{{ i.volumetype }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+             <div class="form-group">
+                 <select name="gst" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in gst %}
+                        <option value="{{ i.id }}">{{ i.gst }}</option>
+                {% endfor %}
+
+            </select>
+              </div>
+            </div>
+
+               <div class="col-lg-4">
+                      <div class="form-group">
+                <label for="exampleInputEmail1">unit_weight:</label>
+                <input type="number" class="form-control" id="name" aria-describedby="emailHelp" name="unit_weight" placeholder="Enter unit Weight">
+              </div>
+          <div class="form-group">
+                 <select name="size" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in size %}
+                        <option value="{{ i.id }}">{{ i.size }}</option>
+                {% endfor %}
+
+            </select>
+              </div>
+          <div class="form-group">
+                <label for="exampleInputEmail1">Color:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="color" placeholder="Enter Colour">
+              </div>
+
+               </div>
+        </div>
+
+
+            <br>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+<!-- end -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+<script>
+  $(document).ready(function () {
+    var $productvar = $("#catitem");
+    var $itemvar = $("#subitem");
+    var $options = $itemvar.find('option');
+    $productvar.on('change', function () {
+      $itemvar.html($options.fillter('[value="' + this.value + '"]'));
+    }).trigger('change');
+  });
+</script>
+
+
+
+{% endblock content %}

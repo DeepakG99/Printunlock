@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="brouchers">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#" style="text-decoration: none; color: black;">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="#" style="text-decoration: none; color: black;">Products</a>
+    </li>
+    <li class="breadcrumb-item">
+      <span>Add Products</span>
+    </li>
+  </ul>
+</div>
+<div class="content-box">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="element-wrapper">
+        <h3 class="element-header">
+          Step 1:
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="form-box">
+        <!-- Add product -->
+
+        <form action="{% url  'addproductselect' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Product Type</label><br>
+            <select name="producttype" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product Type</option>
+              <option  value="simple">Simple product</option>
+              <option value="variable">Variable product</option>
+
+            </select>
+
+          </div><br>
+          <div style=" padding: 3px;">
+            <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Select Category:</label><br>
+            <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option style="color: black; font-weight: bold" selected>Choose Category</option>
+                {% for i in categ %}
+                    <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+            </select>
+
+          </div><br>
+
+            <div class="form-group" >
+              <input type="submit" class="btn btn-primary">
+
+            </div>
+            
+          </div>
+       
+          
+
+        </form>
+      </div>
+
+    </div>
+      <div class="col-lg-4">
+          <button data-bs-toggle="modal" href="#exampleModalTogglegroup" role="button"  class="btn btn-primary" >Add Grouped Product</button>
+      </div>
+
+  </div>
+</div>
+
+</div>
+
+   <div class="modal fade" id="exampleModalTogglegroup" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Attributes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="col-sm-6">
+    <div class="row">
+        <select class="form-select" style="margin: 20px;" id="selection">
+
+            <option value="simple">Simple and Simple</option>
+            <option value="variable">Variable and Variable</option>
+            <option value="grouped">Simple And variable</option>
+        </select>
+    </div>
+</div>
+<div class="row" style="margin: 20px;">
+    <!-- write here  -->
+    <div id="simple_show" style="display:none ;">
+       <form action="{% url  'handlegroup'  %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="row">
+
+            <div class="col-lg-12">
+                 <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Select Simple Product 1</label><br>
+            <select name="prod1" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in simple %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+              <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Select Simple Product 2</label><br>
+            <select name="prod2" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in simple %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+
+            </div>
+
+
+        </div>
+
+
+            <br>
+       <div class="form-group">
+              <input hidden  name="hidden" value="sim12"></input>
+            </div>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+
+    </div>
+
+    <div id="variable_show" style="display:none ;">
+          <form action="{% url  'handlegroup'  %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="row">
+
+            <div class="col-lg-12">
+                 <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Select Variable Product 1</label><br>
+            <select name="prod1" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in vari %}
+                        <option value="{{ i.id }}">{{ i.product.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+             <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Select Variable Product 2</label><br>
+            <select name="prod2" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in vari %}
+                        <option value="{{ i.id }}">{{ i.product.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+
+            </div>
+
+
+        </div>
+
+
+            <br>
+          <div class="form-group">
+              <input hidden  name="hidden" value="var12"></input>
+            </div>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+
+    </div>
+    <div id="grouped_show" style="display:none ;">
+          <form action="{% url  'handlegroup'  %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="row">
+
+            <div class="col-lg-12">
+                 <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Select Simple Product</label><br>
+            <select name="prod1" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in simple %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+             <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Select Variable Product</label><br>
+            <select name="prod2" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Select</option>
+                    {% for i in vari %}
+                        <option value="{{ i.id }}">{{ i.product.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+
+            </div>
+
+
+        </div>
+
+
+            <br>
+          <div class="form-group">
+              <input hidden  name="hidden" value="simvar"></input>
+            </div>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    var selectopt = document.getElementById("selection")
+
+    var simple_show = document.getElementById("simple_show")
+    var variable_show = document.getElementById("variable_show")
+    var grouped_show = document.getElementById("grouped_show")
+
+    simple_show.style.display = "block"
+
+    selectopt.addEventListener('change', (event) => {
+        var selectedopt = selectopt.options[selectopt.selectedIndex].value
+        if (selectedopt == "simple") {
+            simple_show.style.display = "block"
+            variable_show.style.display = "none"
+            grouped_show.style.display = "none"
+
+
+        }
+        if (selectedopt == "variable") {
+            simple_show.style.display = "none"
+            variable_show.style.display = "block"
+            grouped_show.style.display = "none"
+
+        }
+        if (selectedopt == "grouped") {
+            simple_show.style.display = "none"
+            variable_show.style.display = "none"
+            grouped_show.style.display = "block"
+
+        }
+    })
+
+
+
+</script>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<!-- end -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+<script>
+  $(document).ready(function () {
+    var $productvar = $("#catitem");
+    var $itemvar = $("#subitem");
+    var $options = $itemvar.find('option');
+    $productvar.on('change', function () {
+      $itemvar.html($options.fillter('[value="' + this.value + '"]'));
+    }).trigger('change');
+  });
+</script>
+
+
+
+{% endblock content %}

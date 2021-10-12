@@ -1,0 +1,133 @@
+{% load static %}
+<html lang="en">
+<head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'js/bootstrap.min.js' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!---logo slider---->
+    <script src="{% static 'js/slick.js' %}"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'js/bootstrap.min.js' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/slick.js' %}"></script>
+    <script src="{% static 'scripts/zoom-image.js' %}"></script>
+    <script src="{% static 'scripts/main.js' %}"></script>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="top-bar-sec">
+                <div class="top-bar-inner">
+                    <div class="top-bar-left"><a href="#">Track Order</a></div>
+                    <div class="top-bar-right">Need any help? Call Us:<a href="tel:2462521425">246 252 1425</a></div>
+                </div>
+            </div>
+            <div class="search-bar-sec">
+                <div class="logo-sec"><a href="{% url 'PrintlookHome' %}"><img src="{% static 'img/print-unlock-logo.png' %}" alt="logo" title="Logo"></a></div>
+                <div class="search-sec">
+                    <form class="example" action="{% url 'search' %}" method="POST">
+                        {% csrf_token %}
+                        <input  type="text" placeholder="Search.." name="query">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="login-sec">
+                    <ul>
+                        {% if request.user.is_authenticated %}
+                        <li><div class="dropdown" style="width:80;">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: white ; ">
+                                <i class="fa fa-user" style="color:#1e7e9b;"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#" style="margin-left:15px;" >My orders</a><br>
+                                <a class="dropdown-item" href="#" style="margin-left:15px;">My account</a><br>
+                                <a class="dropdown-item" href="#" style="margin-left:15px;">Logout</a>
+                            </div>
+                        </div></li>
+                        {% else %}
+                        <li><a href="{% url 'CustomerLoginPage' %}">Login</a></li>
+                        {% endif %}
+                        <li><a href=""><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                        <li><a href="{% url 'CartPage' %}"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <div class="menu-bar-sec">
+                        <div class="menu-bar-inr">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="{% url 'PrintlookHome' %}">Home</a></li>
+                                <li><a href="{% url 'CustomerCategorypage' %}">Product</a></li>
+                                <li><a href="#blog">Blog</a></li>
+                                <li><a href="">Shop</a></li>
+                                <li><a href="">More Gifts</a></li>
+                                <li><a href="">Occassions</a></li>
+                                <li><a href="">Global</a></li>
+                                <li><a href="{% url 'contactPage' %}">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <footer class="footer-main">
+        <div class="footer-para-outer">
+            <div class="footer-para">
+                <img src="/staticold/img/logo.png" alt="" title="">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>
+            </div>
+            <div class="footer-link">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li><a href="#">Printing Calculator</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Accounts</a></li>
+                </ul>
+            </div>
+
+            <div class="social-sec">
+                <h3>Follow Us On-</h3>
+                <ul>
+                    <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-google-plus-official" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        <p>© 2021 Print Unlock. All Right Reserved</p>
+    </div>
+</body>
+</html>

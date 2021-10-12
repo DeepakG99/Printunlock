@@ -1,0 +1,399 @@
+{% extends 'basic.html' %}
+{% block body %}
+    {% load static %}
+    <div class="container category-sec-main">
+        <div class="row mb-5">
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-header">Categories</div>
+                    <div class="list-group list-group-flush">
+                        {% for i in category %}
+                        <a href="#{{ i.name }}" class="list-group-item list-group-item-action">{{ i.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Filter</div>
+                    <div class="card-body p-1">
+                        <div class="card border-0 b-3">
+                            <div class="card-header p-2 bg-white" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false">
+                                <p class="m-0 h6">Brand</p>
+                            </div>
+                            <div class="card-body p-0 collapse show" id="collapseExample1">
+                                <ul class="list-group list-group-flush" style="height:200px;overflow:auto;">
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Google</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Microsoft</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Apple</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Samsung</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Amazon</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Asus</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">LG</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Sony</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">MSI</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">HP</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Compact</label>
+                                        </div>
+                                        <span class="badge badge-secondary badge-pill">14</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card border-0 b-3">
+                            <div class="card-header p-2 bg-white" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false">
+                                <p class="m-0 h6">Size</p>
+                            </div>
+                            <div class="card-body p-0 collapse show" id="collapseExample2">
+                                <ul class="list-group list-group-flush" style="height:200px;overflow:auto;">
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">XXS</label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">XS</label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">S</label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">M</label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">L</label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">XL</label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">XXL</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card border-0 b-3">
+                            <div class="card-header p-2 bg-white" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false">
+                                <p class="m-0 h6">Color</p>
+                            </div>
+                            <div class="card-body p-0 collapse show" id="collapseExample3">
+                                <ul class="list-group list-group-flush" style="height:200px;overflow:auto;">
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox w-100">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#E52B50"></div>
+                                                <span>Amaranth</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox w-100">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#FFBF00"></div>
+                                                <span>Amber</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#007FFF"></div>
+                                                <span>Azure</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#007BA7"></div>
+                                                <span>Cerulean</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#B87333"></div>
+                                                <span>Copper</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#DC143C"></div>
+                                                <span>Crimson</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#008000"></div>
+                                                <span>Green</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#808080"></div>
+                                                <span>Gray</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#FFD700"></div>
+                                                <span>Gold</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#D1E231"></div>
+                                                <span>Pear</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#800080"></div>
+                                                <span>Purple</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-2 d-flex justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <div class="float-left p-2 mt-1 mr-1" style="background-color:#C0C0C0"></div>
+                                                <span>Silver</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card border-0 b-3">
+                            <div class="card-header p-2 bg-white" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false">
+                                <p class="m-0 h6">Price</p>
+                            </div>
+                            <div class="card-body p collapse show" id="collapseExample4">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Min</label>
+                                        <input class="form-control" placeholder="$0" type="number">
+                                    </div>
+                                    <div class="form-group text-right col-md-6">
+                                        <label>Max</label>
+                                        <input class="form-control" placeholder="$1,0000" type="number">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-block btn-primary">Filter</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-9 cate-product-right">
+                <div class="cate-head">
+                    <h2>Personalized Photo Gifts</h2>
+                    <p>Custom printed gifts for your cherished ones! Gift them the favourite memories you shared together!</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Sort By:</span>
+                                    </div>
+                                    <select class="form-control" id="" name="">
+                                        <option value="">Default</option>
+                                        <option value="">Name (A - Z)</option>
+                                        <option value="">Name (Z - A)</option>
+                                        <option value="">Price (Low &gt; High)</option>
+                                        <option value="">Price (High &gt; Low)</option>
+                                        <option value="">Rating (Highest)</option>
+                                        <option value="">Rating (Lowest)</option>
+                                        <option value="">Model (A - Z)</option>
+                                        <option value="">Model (Z - A)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Show:</span>
+                                    </div>
+                                    <select class="form-control" id="" name="">
+                                        <option value="">15</option>
+                                        <option value="">25</option>
+                                        <option value="">50</option>
+                                        <option value="">75</option>
+                                        <option value="">100</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row item">
+
+                        {% for i in category %}
+                        <div class="col-lg-4" id="{{ i.name }}">
+
+                            <div class="relative-product-inner">
+                            <a href="#">
+                                  <div class="product-img-left"><img src="/media/{{ i.image }}" alt="" title="" height="250px" width="250px"></div>
+                                <div class="category-text">
+                                    <h3>{{ i.name }}</h3>
+                                    <p>{{ i.catDesc }}</p>
+
+                                 <a href="{% url 'subcategory' i.id %}" class="category-btn">Buy</a>
+                                </div>
+                            </a>
+                            <div class="product-overlay"><a href="#">
+                                </a>
+                                <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                                </a>
+                                <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
+                                </a>
+                                <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+                            </div>
+
+                        </div>
+
+                        </div>
+                {% endfor %}
+                    </div>
+                    <div class="card-footer p-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="pagination m-0">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="text-right mb-0 mt-1">Showing 1 to 12 of 12 (1 Pages)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+
+

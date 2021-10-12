@@ -1,0 +1,138 @@
+<html lang="en">
+{% load static %}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'js/bootstrap.min.js' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
+    <!---logo slider---->
+    <script src="{% static 'js/slick.js' %}"></script>
+
+</head>
+
+
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="top-bar-sec">
+                <div class="top-bar-inner">
+                    <!--                    <div class="top-bar-left"><a href="#">Track Order</a></div>-->
+                    <div class="top-bar-right"><a href="#" class="t-o">Track Order</a> Need any help? Call Us:<a href="tel:2462521425">246 252 1425</a></div>
+                </div>
+            </div>
+            <div class="search-bar-sec">
+                <div class="logo-sec"><a href="{% url 'PrintlookHome' %}"><img src="{% static 'img/print-unlock-logo.png' %}" alt="logo" title="Logo"></a></div>
+                <div class="search-sec">
+                    <form class="example" action="{% url 'search' %}" method="post">{% csrf_token %}
+                        <input type="text" placeholder="Search.." name="query">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="login-sec">
+                    <ul>
+                        <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        {% if request.user.is_authenticated %}
+                            <li><a href="#">{{ request.user.first_name }}</a></li> <li><a href="{% url 'CustomerLogout' %}">Log Out</a></li>
+
+                        {% else %}
+                       <li><a href="{% url 'CustomerLoginPage' %}">Login/SignUp</a></li>
+                        {% endif %}
+                        <li><a href=""><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                        <li><a href="{% url 'cartpro' %}"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <div class="menu-bar-sec">
+                        <div class="menu-bar-inr">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{% url 'CustomerCategorypage' %}">All Category</a></li>
+                                <li><a href="{% url 'groupproductshow' %}">Print Online</a></li>
+                                <li><a href="">Photo Gifts</a></li>
+                                <li><a href="">Photography</a></li>
+                                <li><a href="">Wedding Cards</a></li>
+                                <li><a href="">Occasions</a></li>
+                                <li><a href="">Relations</a></li>
+                                <li><a href="">Design Services</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+{% block body %}
+{% endblock body %}
+    <footer class="footer-main">
+        <div class="footer-para-outer">
+            <div class="footer-para">
+                <img src="{% static 'img/print-unlock-logo.png' %}" height="70px" width="250px" alt="" title="">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>
+            </div>
+            <div class="footer-link">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li><a href="#">Printing Calculator</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Accounts</a></li>
+                </ul>
+            </div>
+            <div class="footer-link">
+                <h3>Certain Useful Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!--
+            <div class="social-sec">
+                <h3>Follow Us On-</h3>
+                <ul>
+                    <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-google-plus-official" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+-->
+
+            <div class="contact-ft">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Phone:<a href="tel:012345789"> 012345789</a></li>
+                    <li>Email:<a href="mailto:care@printo.in"> care@printo.in</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        <p>© 2021 Print Unlock. All Right Reserved</p>
+    </div>
+
+</body>
+
+</html>

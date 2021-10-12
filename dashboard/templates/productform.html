@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="brouchers">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'PrintHome' %}" style="text-decoration: none; color: black;">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'ProductViewPage' %}" style="text-decoration: none; color: black;">Products</a>
+    </li>
+    <li class="breadcrumb-item">
+      <span>Add Products</span>
+    </li>
+  </ul>
+</div>
+<div class="content-box">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="element-wrapper">
+        <h3 class="element-header">
+          Add Product Form
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-box">
+        <!-- Add product -->
+
+        <form action="{% url  'ProductFormpage' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Product Type</label><br>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <option selected value="s">Simple product</option>
+              <option value="g">Grouped product</option>
+              <option value="v">Variable product</option>
+
+            </select>
+
+          </div><br>
+          <div style=" padding: 3px;">
+            <div class="form-group" style="background-color: white; padding: 5PX;">
+
+              <label for="exampleInputEmail1">Category name</label>
+              <input type="text" class="form-control" id="categoryname" aria-describedby="emailHelp" name="categoryname"
+                placeholder="Category Name">
+
+
+
+            </div>
+
+            <div class="form-group" >
+              <input type="submit">
+
+            </div>
+            
+          </div>
+       
+          
+
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+<!-- end -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+<script>
+  $(document).ready(function () {
+    var $productvar = $("#catitem");
+    var $itemvar = $("#subitem");
+    var $options = $itemvar.find('option');
+    $productvar.on('change', function () {
+      $itemvar.html($options.fillter('[value="' + this.value + '"]'));
+    }).trigger('change');
+  });
+</script>
+
+
+
+{% endblock content %}

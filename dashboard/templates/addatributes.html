@@ -1,0 +1,286 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="brouchers">
+  <ul class="breadcrumb">
+     <li class="breadcrumb-item">
+     <a href="#" style="text-decoration: none; color: black;">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+    <a href="#" style="text-decoration: none; color: black;">Products</a>
+    </li>
+    <li class="breadcrumb-item">
+    <span>Add Global Attributes</span>
+    </li>
+  </ul>
+</div>
+<div class="content-box">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="element-wrapper">
+            <h3 class="element-header">
+             Add Global Attributes
+            </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-lg-4">
+          <div class="product-box">
+    <div class="attribute">
+    <ul>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglecate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Categories</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglesubcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Sub-Categories</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleGsmTYpe" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add GsmType</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglevoltype" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add VolumeType</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglesize" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Sizes</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglegst" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add GST global</button></li>
+    </ul>
+    </div>
+       <div class="modal fade" id="exampleModalTogglecate" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'addcategory' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Category Name:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Category Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload Image</label><br>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+              </div><br>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+        <div class="modal fade" id="exampleModalTogglesubcate" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Sub-Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'addsubcategory' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Sub-Category Name:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Category Name">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload Image</label><br>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+              </div><br>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModalToggleGsmTYpe" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add GsmTYpe</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'gsmtype' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter GsmTypes</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="gsmtype"></textarea>
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+              <div class="modal fade" id="exampleModalTogglevoltype" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'voltype' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter VolumeTypes</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="voltype"></textarea>
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+          <div class="modal fade" id="exampleModalTogglesize" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Sizes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'sizes' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Sizes</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="size"></textarea>
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+          <div class="modal fade" id="exampleModalTogglegst" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Gst</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'gst' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter GST %</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="gst"></textarea>
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+    </div>
+        <div class="col-lg-4">
+          <div class="product-box">
+    <div class="attribute">
+    <ul>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Categories</button></li>
+    </ul>
+    </div>
+                      <div class="modal fade" id="exampleModalToggleshopcate" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Trending category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'shopbycate' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="cateid" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+  </div>
+    </div>
+
+
+    </div>
+
+  </div>
+  {% endblock content %}

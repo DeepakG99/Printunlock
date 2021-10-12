@@ -1,0 +1,28 @@
+{% extends "customerbase.html" %}
+{% block content %}
+
+    <section class="category-main">
+        <div class="cate-head">
+            <h2>{{cate.title}}</h2>
+            <p>Custom printed gifts for your cherished ones! Gift them the favourite memories you shared together!</p>
+        </div>
+        <div class="container category-box">
+        {% if prd1 == 0 %}
+<h1> Product not found</h1>
+{% endif%}
+           
+            {% for product in prd %}
+            <div class="category-inner">
+                <a href="{% url 'productdetail' product.id %}">
+                    <img src="{{product.image.url}}" alt="" title="">
+                    <div class="category-text">
+                        <h3>{{product.title}}</h3>
+                        <p>Starts from RS : {{product.price|floatformat:2}}</p>
+                        <span>( Available in 4 sizes )</span>
+                    </div>
+                    </a>
+                </div>
+                {% endfor %} 
+        </div>
+    </section>
+{% endblock content %}

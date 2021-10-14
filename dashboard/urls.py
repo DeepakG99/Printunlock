@@ -47,5 +47,8 @@ urlpatterns = [
     path('handlegroup', views.handleGroup, name="handlegroup"),
     path('shopbycate', views.shopbycate, name="shopbycate"),
     path('allproductlist', views.allProduct, name="allproductlist"),
+    path('expressshiping', views.ExpressShipping, name="expressshipping"),
+    path('plusshipping', views.PlusShipping, name="plusshipping"),
+    path('coupon', views.Coupon, name="coupon"),
     path('groupedproducts/<str:ids>/', views.GroupP, name="groupedproducts"),
 ]

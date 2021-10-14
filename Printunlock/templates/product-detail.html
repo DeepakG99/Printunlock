@@ -125,7 +125,7 @@
                     <p class="prdct-price"><span id="cartprice" >₹ {{ sp.unit_price }}</span><span class="tax">Taxes Inclusive </span></p>
                     <div class="pdp-buttons btn-shop">
                         <button type="submit" id="addToCart">ADD TO CART</button>
-                        <button type="submit" id="buynow">BUY NOW</button>
+                        <button formaction="{% url 'buynow' %}" type="submit" id="buynow">BUY NOW</button>
                     </div>
                 </div>
             </form>

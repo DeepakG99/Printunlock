@@ -123,16 +123,17 @@ def simpleProductDetail(request, ids):
 def variableProductDetail(request, ids):
     vp  = VariableProduct.objects.get(id=ids)
     vpa = VariableProductAttributes.objects.filter(product_id=ids)
+    vgst =  vpa[0].gst.gst
     image = variableImage.objects.filter(product_id=ids)
     size = Sizes.objects.filter(category_id=vp.subcategory.category.id)
     gsm_type = GsmType.objects.filter(category_id=vp.subcategory.category.id)
-    print(image)
     context = {
         "vp":vp,
         "vpa":vpa,
         "image":image,
         "size":size,
-        "gsm":gsm_type
+        "gsm":gsm_type,
+        "vgst":vgst
 
     }
     return render(request,"variableproductdetail.html",context)
@@ -260,6 +261,166 @@ def CartPro(request):
     print(request.user.is_superuser)
     return render(request, 'cart.html', context)
 
+
+def buynow(request):
+    if request.method == "POST":
+        user = request.user.id
+        prod = request.POST["prod"]
+        prodid = request.POST["prodid"]
+        product = request.POST["product"]
+        size = request.POST["size"]
+        quality = request.POST["quality"]
+        quantity = request.POST["quantity"]
+        gst = request.POST["gst"]
+        packing_charge = request.POST["idi"]
+        file = request.POST.getlist("myfile")
+        print(file)
+        base_price = request.POST["base_price"]
+        product_weight = request.POST["product_weight"]
+
+
+        order = orderFinal.objects.create(product=product,user_id=user, product_type=prod,product_id=prodid,size=size, quantity=quantity,
+                                          quality=quality, gst_applied=gst, base_price=base_price, packing_charges=packing_charge, product_weight=product_weight)
+        order.save()
+        for i in file:
+            ss = orderImageFile.objects.create(
+                order_id=order.id,
+                file = i
+            )
+            ss.save()
+        return redirect('finalorder', order.id)
+
+
+
+
+
+def final_order(request, ids):
+    order = orderFinal.objects.get(id=ids)
+
+    if request.method =="POST":
+        shiping_type = request.POST["shiping_type"]
+        shiping_address_type = request.POST["shiping_address_type"]
+        shiping_zone = request.POST["shiping_zone"]
+        customer_first_name = request.POST["first_name"]
+        customer_last_name = request.POST["last_name"]
+        customer_email = request.POST["email"]
+        customer_phone_number = int(request.POST["number"])
+        customer_zipcode = request.POST["zipcode"]
+        customer_country = request.POST["country"]
+        customer_state = request.POST["state"]
+        customer_city = request.POST["city"]
+        customer_town = request.POST["town"]
+        coupon_code = request.POST["coupon_code"]
+        gst_number_customer = request.POST["gst_customer"]
+        gst_address_customer = request.POST["gst_address"]
+        gst_registered_name = request.POST["registered_name"]
+        shiping_charges = 20
+        gst_applied = order.gst_applied
+        price = order.packing_charges + order.base_price + shiping_charges
+        gst_rupee = (price * gst_applied) / 100
+        product_final_price = price + gst_rupee
+        final_price_coupon_applied = product_final_price
+        order.final_price_coupon_applied = final_price_coupon_applied
+        order.save()
+        try:
+            cupon = CouponGlobaladd.objects.get(coupon_code=coupon_code)
+            order.coupon_applied = True
+            order.coupon_code = coupon_code
+            order.coupon_discount = cupon.discount_percent
+            order.coupon_Applied_type = cupon.coupon_applied_type
+            order.save()
+
+            if cupon.coupon_applied_type == "subtotal":
+                discount = (price * cupon.discount_percent)/100
+                price = price - discount
+                product_final_price = price + gst_rupee
+                final_price_coupon_applied = product_final_price
+                order.final_price_coupon_applied = final_price_coupon_applied
+
+                order.save()
+            else:
+                discount = (product_final_price * cupon.discount_percent) / 100
+                product_final_price = product_final_price - discount
+                final_price_coupon_applied = product_final_price
+                order.final_price_coupon_applied = final_price_coupon_applied
+                order.save()
+        except:
+            pass
+
+        if shiping_address_type == "sameasbilling":
+            global shipping_address
+            shipping_address = "Same As Billing"
+        else:
+            Order_id = order.id
+            customer_first_name = request.POST["customer_first_name"]
+            customer_last_name = request.POST["customer_last_name"]
+            customer_email = request.POST["customer_email"]
+            customer_phone_number = request.POST["customer_phone_number_delevery"]
+            customer_zipcode = request.POST["customer_zipcode"]
+            customer_country = request.POST["customer_country"]
+            customer_state = request.POST["customer_state"]
+            customer_city = request.POST["customer_city"]
+            customer_town = request.POST["customer_town"]
+            ss = DifferentShippingAddress.objects.create(order_id=Order_id, customer_first_name =customer_first_name, customer_last_name=customer_last_name,
+                                                         customer_email=customer_email,customer_phone_number=customer_phone_number, customer_zipcode=customer_zipcode,
+                                                         customer_country=customer_country, customer_state=customer_state,customer_city=customer_city,
+                                                         customer_town=customer_town)
+            ss.save()
+
+
+        product_margin = (final_price_coupon_applied - (1 + gst_applied)*(order.base_price + shiping_charges + order.packing_charges))/(1 + gst_applied)
+        order.shiping_zone = shiping_zone
+        order.shiping_type = shiping_type
+        order.shiping_charges = shiping_charges
+        order.shipping_address = shipping_address
+        order.customer_first_name = customer_first_name
+        order.customer_last_name = customer_last_name
+        order.customer_email = customer_email
+        order.customer_phone_number = customer_phone_number
+        order.customer_zipcode = customer_zipcode
+        order.customer_country = customer_country
+        order.customer_state = customer_state
+        order.customer_city = customer_city
+        order.customer_town = customer_town
+
+        # order.billing_address = billing_address
+        order.product_margin = product_margin
+        order.save()
+        return redirect('allorder')
+    simage = []
+    shipplus = ShippingPlusGlobal.objects.all()
+    shipexpress = ShippingExpressGlobal.objects.all()
+    if order.product_type == "simple":
+        sp = SimpleProduct.objects.get(id=order.product_id)
+        simage = simpleImage.objects.filter(product_id=order.product_id)[:1]
+    elif order.product_type == "variable":
+        sp = VariableProductAttributes.objects.get(product_id=order.product_id)
+    else:
+        sp = GroupedProduct.objects.get(id=order.product_id)
+
+
+    coupon = CouponGlobaladd.objects.all()
+
+    context ={
+        "shipplus":shipplus,
+        "shipexpress":shipexpress,
+        "sp":sp,
+        "Simage":simage,
+        "coupon":coupon,
+        "ids":ids
+
+    }
+    return render(request, 'checkout.html', context)
+
+
+
+def allorder(request):
+    orde  = orderFinal.objects.all()
+    context = {
+        "orde":orde
+    }
+    return render(request, 'orderpage.html', context)
+
 # def addtocart(request):
 #     if request.method == "POST":
 #         prid = request.POST['prid']
@@ -331,93 +492,93 @@ def CartPro(request):
 #             'cart': cart
 #         })
 
-def cartitem(request):
-    if request.method == "POST":
-        cart_id = request.POST.getlist('cart_id')
-        gu = guest.objects.filter(user=request.user).first()
-        for id in cart_id:
-            item = Cart.objects.get(id = id)
-            Cartitem.objects.create(guest = gu, items = item)
-    return HttpResponseRedirect(reverse('checkout'))
+# def cartitem(request):
+#     if request.method == "POST":
+#         cart_id = request.POST.getlist('cart_id')
+#         gu = guest.objects.filter(user=request.user).first()
+#         for id in cart_id:
+#             item = Cart.objects.get(id = id)
+#             Cartitem.objects.create(guest = gu, items = item)
+#     return HttpResponseRedirect(reverse('checkout'))
 
-def buynow(request):
-    if request.method == "POST":
-        prid = request.POST['prid']
-        cart = request.session.get('cart')
-        if cart:
-            quantity = cart.get(prid)
-            if quantity:
-                  cart[prid] = quantity + 1
-            else:
-               cart[prid] = 1 
-        else:
-            cart = {}
-            cart[prid] = 1
-        request.session['cart'] = cart
-        print(request.session['cart'])
-        return redirect('PrintlookHome')
-
-
+# def buynow(request):
+#     if request.method == "POST":
+#         prid = request.POST['prid']
+#         cart = request.session.get('cart')
+#         if cart:
+#             quantity = cart.get(prid)
+#             if quantity:
+#                   cart[prid] = quantity + 1
+#             else:
+#                cart[prid] = 1
+#         else:
+#             cart = {}
+#             cart[prid] = 1
+#         request.session['cart'] = cart
+#         print(request.session['cart'])
+#         return redirect('PrintlookHome')
 
 
-def checkout(request):
-    if request.user.is_authenticated:
-        gue = guest.objects.filter(user=request.user).first()
-        item = Cartitem.objects.filter(guest = gue)
-    return render(request, "checkout.html", {'item':item})
 
-def order(request):
-    if request.method == "POST":
-        prid = request.POST.getlist('prid')
-        subtotal = request.POST['subtotal']
-        gstamount = request.POST['gstamount']
-        packaging = request.POST['packaging']
-        grandtotal = request.POST['grandtotal']
-        firstname = request.POST['firstname']
-        lastname = request.POST['lastname']
-        email = request.POST['email']
-        phone = request.POST['phone']
-        country = request.POST['country']
-        address = request.POST['address']
-        city = request.POST['address']
-        town = request.POST['town']
-        pincode = request.POST['pincode']
-        if request.user.is_authenticated:
-             gue =guest.objects.filter(user=request.user).first()
-             order = Order.objects.create(guest= gue, orderitem=prid, subtotal=subtotal, gst=gstamount, packaging=packaging,
-                                            grandtotal=grandtotal, firstname=firstname, lastname=lastname, email = email, phone=phone, country=country,
-                                            address=address, city=city, town=town, pincode=pincode)
-             for id in prid:
-                  cart_id= Cart.objects.get(id = id)
-                  Ordercart.objects.create(cart=cart_id, order=order, guest=gue)
-             url = "https://api.cashfree.com/api/v1/order/create"
-             payload = {
-             "appId": "132628c49e909479610a519e17826231",
-             "secretKey" : "060cf8761daed00af7a2c73427162e2720aa914b",
-             "orderId": order.id,
-             "orderAmount": order.grandtotal,
-             "orderCurrency": "INR",
-             "customerEmail": order.email,
-             "customerName": order.lastname,
-             "customerPhone": order.phone,
-             "returnUrl": "https://cashfree.com",
-             "notifyUrl" : ""
-            }
-             response = requests.request("POST", url, data = payload)
-             res=json.loads(response.text)
-             if(res['status']=="OK"):
-                   return redirect(res['paymentLink'])
-    return HttpResponseRedirect(reverse("https://payments.cashfree.com/order/#nt6eEO9ZNz6DpGgYNUL2"))
+
+# def checkout(request):
+#     if request.user.is_authenticated:
+#         gue = guest.objects.filter(user=request.user).first()
+#         item = Cartitem.objects.filter(guest = gue)
+#     return render(request, "checkout.html", {'item':item})
+#
+# def order(request):
+#     if request.method == "POST":
+#         prid = request.POST.getlist('prid')
+#         subtotal = request.POST['subtotal']
+#         gstamount = request.POST['gstamount']
+#         packaging = request.POST['packaging']
+#         grandtotal = request.POST['grandtotal']
+#         firstname = request.POST['firstname']
+#         lastname = request.POST['lastname']
+#         email = request.POST['email']
+#         phone = request.POST['phone']
+#         country = request.POST['country']
+#         address = request.POST['address']
+#         city = request.POST['address']
+#         town = request.POST['town']
+#         pincode = request.POST['pincode']
+#         if request.user.is_authenticated:
+#              gue =guest.objects.filter(user=request.user).first()
+#              order = Order.objects.create(guest= gue, orderitem=prid, subtotal=subtotal, gst=gstamount, packaging=packaging,
+#                                             grandtotal=grandtotal, firstname=firstname, lastname=lastname, email = email, phone=phone, country=country,
+#                                             address=address, city=city, town=town, pincode=pincode)
+#              for id in prid:
+#                   cart_id= Cart.objects.get(id = id)
+#                   Ordercart.objects.create(cart=cart_id, order=order, guest=gue)
+#              url = "https://api.cashfree.com/api/v1/order/create"
+#              payload = {
+#              "appId": "132628c49e909479610a519e17826231",
+#              "secretKey" : "060cf8761daed00af7a2c73427162e2720aa914b",
+#              "orderId": order.id,
+#              "orderAmount": order.grandtotal,
+#              "orderCurrency": "INR",
+#              "customerEmail": order.email,
+#              "customerName": order.lastname,
+#              "customerPhone": order.phone,
+#              "returnUrl": "https://cashfree.com",
+#              "notifyUrl" : ""
+#             }
+#              response = requests.request("POST", url, data = payload)
+#              res=json.loads(response.text)
+#              if(res['status']=="OK"):
+#                    return redirect(res['paymentLink'])
+#     return HttpResponseRedirect(reverse("https://payments.cashfree.com/order/#nt6eEO9ZNz6DpGgYNUL2"))
 
 
         
 
-def cusdash(request):
-    if request.user.is_authenticated:
-           gue = guest.objects.filter(user=request.user).first()
-           item = Ordercart.objects.filter(guest = gue) 
-           order = Order.objects.filter(guest=gue)  
-    return render(request, "dashboard.html", {'item':item, 'order':order})
+# def cusdash(request):
+#     if request.user.is_authenticated:
+#            gue = guest.objects.filter(user=request.user).first()
+#            item = Ordercart.objects.filter(guest = gue)
+#            order = Order.objects.filter(guest=gue)
+#     return render(request, "dashboard.html", {'item':item, 'order':order})
 
 def contact(request):
     if request.method == "POST":

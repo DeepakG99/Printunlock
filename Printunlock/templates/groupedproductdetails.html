@@ -132,7 +132,7 @@
                     <p class="prdct-price"><span id="pricee"></span><span class="tax">Taxes Inclusive </span></p>
                     <div class="pdp-buttons btn-shop">
                      <a href="{% url 'cartpro' %}">   <button type="submit" id="addToCart">ADD TO CART</button></a>
-                        <button type="submit" id="buynow">BUY NOW</button>
+                        <button formaction="{% url 'buynow' %}" type="submit" id="buynow">BUY NOW</button>
                     </div>
                 </div>
                 </form>

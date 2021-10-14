@@ -8,6 +8,9 @@ from dashboard.models import *
 #     password = models.CharField(max_length=20, null=True)
 
 
+
+
+
 class Cartsimple(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
     product = models.ForeignKey(SimpleProduct,models.CASCADE, null=True, blank=True)
@@ -68,26 +71,26 @@ class cartGroupedFile(models.Model):
 #         return self.cart.product.title
 
 
-class Order(models.Model):
-    guest = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
-    orderitem = models.TextField(default=False)
-    subtotal = models.IntegerField(null=True)
-    gst = models.FloatField(null=True)
-    packaging = models.IntegerField(null=True)
-    grandtotal = models.IntegerField(null=True)
-    firstname = models.CharField(max_length=50, null=True)
-    lastname = models.CharField(max_length=50, null=True)
-    email = models.CharField(max_length=20, null=True)
-    phone = models.CharField(max_length=10, null=True)
-    address = models.TextField()
-    city  = models.CharField(max_length=50, null=True)
-    country = models.CharField(max_length=50, null=True)
-    town = models.CharField(max_length=50, null=True)
-    pincode = models.CharField(max_length=10, null=True)
-    orderdate = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.customer.name
+# class Order(models.Model):
+#     guest = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
+#     orderitem = models.TextField(default=False)
+#     subtotal = models.IntegerField(null=True)
+#     gst = models.FloatField(null=True)
+#     packaging = models.IntegerField(null=True)
+#     grandtotal = models.IntegerField(null=True)
+#     firstname = models.CharField(max_length=50, null=True)
+#     lastname = models.CharField(max_length=50, null=True)
+#     email = models.CharField(max_length=20, null=True)
+#     phone = models.CharField(max_length=10, null=True)
+#     address = models.TextField()
+#     city  = models.CharField(max_length=50, null=True)
+#     country = models.CharField(max_length=50, null=True)
+#     town = models.CharField(max_length=50, null=True)
+#     pincode = models.CharField(max_length=10, null=True)
+#     orderdate = models.DateTimeField(auto_now=True)
+#
+#     def __str__(self):
+#         return self.customer.name
 
 # class Ordercart(models.Model):
 #     order = models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -100,3 +103,63 @@ class Order(models.Model):
 
 
 
+class orderFinal(models.Model):
+    user = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
+    product = models.TextField(null=True, blank=True)
+    product_type = models.CharField(max_length=100, null=True, blank=True)
+    product_id = models.IntegerField(null=True, blank=True)
+    product_final_price = models.FloatField(null=True, blank=True)
+    product_weight = models.FloatField(null=True, blank=True)
+    size = models.TextField(null=True, blank=True)
+    quality = models.TextField(null=True, blank=True)
+    quantity = models.TextField(null=True, blank=True)
+    shiping_type = models.CharField(max_length=300, null=True, blank=True)
+    shiping_charges = models.FloatField(null=True, blank=True)
+    shiping_zone = models.CharField(max_length=300, null=True, blank=True)
+    shipping_address = models.TextField(null=True, blank=True)
+    gst_applied = models.FloatField(null=True, blank=True)
+    packing_charges = models.FloatField(null=True, blank=True)
+    base_price = models.FloatField(null=True, blank=True)
+    product_margin = models.FloatField(null=True, blank=True)
+    customer_first_name = models.CharField(max_length=300, null=True, blank=True)
+    customer_last_name = models.CharField(max_length=300, null=True, blank=True)
+    customer_email = models.CharField(max_length=300, null=True, blank=True)
+    customer_phone_number = models.IntegerField(null=True, blank=True)
+    customer_zipcode = models.IntegerField(null=True, blank=True)
+    customer_country = models.CharField(max_length=200, null=True, blank=True)
+    customer_state = models.CharField(max_length=200, null=True, blank=True)
+    customer_city = models.CharField(max_length=200, null=True, blank=True)
+    customer_town= models.CharField(max_length=200, null=True, blank=True)
+    billing_address = models.TextField(null=True, blank=True)
+    coupon_Applied_type = models.TextField(null=True, blank=True)
+    coupon_code= models.CharField(max_length=150, null=True, blank=True)
+    coupon_discount = models.FloatField(null=True, blank=True)
+    coupon_applied = models.BooleanField(null=True, blank=True, default=False)
+    final_price_coupon_applied = models.IntegerField(null=True, blank=True)
+    order_Status = models.TextField(null=True, blank=True)
+
+
+class DifferentShippingAddress(models.Model):
+    order = models.ForeignKey(orderFinal, on_delete=models.CASCADE, null=True, blank=True)
+    customer_first_name = models.CharField(max_length=300, null=True, blank=True)
+    customer_last_name = models.CharField(max_length=300, null=True, blank=True)
+    customer_email = models.CharField(max_length=300, null=True, blank=True)
+    customer_phone_number = models.IntegerField(null=True, blank=True)
+    customer_zipcode = models.IntegerField(null=True, blank=True)
+    customer_country = models.CharField(max_length=200, null=True, blank=True)
+    customer_state = models.CharField(max_length=200, null=True, blank=True)
+    customer_city = models.CharField(max_length=200, null=True, blank=True)
+    customer_town= models.CharField(max_length=200, null=True, blank=True)
+
+
+
+class orderImageFile(models.Model):
+    order = models.ForeignKey(orderFinal, on_delete=models.CASCADE, null=True, blank=True)
+    file = models.FileField(upload_to="cartimage", null=True, blank=True)
+
+
+class CustomerGst(models.Model):
+    order = models.ForeignKey(orderFinal, on_delete=models.CASCADE, null=True, blank=True)
+    gst_number = models.CharField(max_length=200,null=True, blank=True)
+    registred_address = models.CharField(max_length=200,null=True, blank=True)
+    registered_name = models.CharField(max_length=200,null=True, blank=True)

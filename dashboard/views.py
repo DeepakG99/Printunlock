@@ -591,3 +591,30 @@ def allProduct(request):
     }
     return render(request,'allproductslist.html', context)
 
+def ExpressShipping(request):
+    if request.method == "POST":
+        shiping_city = request.POST['shiping_city']
+        shiping_weight = request.POST['shiping_weight']
+        shiping_charges = request.POST['shiping_charges']
+        air_rate = request.POST['shiping_air_rate']
+        ss = ShippingExpressGlobal.objects.create(shiping_city=shiping_city, shiping_weight=shiping_weight,shiping_charges=shiping_charges,
+                                                  air_rate=air_rate)
+        ss.save()
+    return redirect('globalattributes')
+
+def PlusShipping(request):
+    if request.method == "POST":
+        shiping_city = request.POST['shiping_city']
+        shiping_weight = request.POST['shiping_weight']
+        shiping_charges = request.POST['shiping_charges']
+        ss = ShippingPlusGlobal.objects.create(shiping_city=shiping_city, shiping_weight=shiping_weight,shiping_price=shiping_charges)
+        ss.save()
+    return redirect('globalattributes')
+
+def Coupon(request):
+    if request.method == "POST":
+        coupon_code = request.POST['coupon_code']
+        discount_percent = request.POST['discount_percent']
+        ss = CouponGlobaladd.objects.create(coupon_code=coupon_code,discount_percent=discount_percent)
+        ss.save()
+    return redirect('globalattributes')

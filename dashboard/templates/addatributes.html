@@ -240,7 +240,10 @@
           <div class="product-box">
     <div class="attribute">
     <ul>
-      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Categories</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Trending Categories</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopexpress" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Shipping Express </button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopplus" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Shipping Plus</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcoupon" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add  Coupon</button></li>
     </ul>
     </div>
                       <div class="modal fade" id="exampleModalToggleshopcate" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
@@ -264,6 +267,98 @@
             </select>
 
           </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+           <div class="modal fade" id="exampleModalToggleshopexpress" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Express Shipping</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'expressshipping' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Zone:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_city" placeholder="Zone">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Maximum Weight in GMS:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_weight" placeholder="Maximum Weight">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Shiping Charge:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_charges" placeholder="Shipping Charges">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Air SHiping Charge:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_air_rate" placeholder="Shipping Air Charges">
+              </div>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+           <div class="modal fade" id="exampleModalToggleshopplus" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Plus-Shipping</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+         <div class="modal-body">
+          <form action="{% url  'plusshipping' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Zone:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_city" placeholder="Zone">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Maximum Weight in GMS:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_weight" placeholder="Maximum Weight">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Shiping Charge:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_charges" placeholder="Shipping Charges">
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+           <div class="modal fade" id="exampleModalToggleshopcoupon" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Coupon</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+         <div class="modal-body">
+          <form action="{% url  'coupon' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Coupon Code:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="coupon_code" placeholder="Coupon Code">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Discount in %:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="discount_percent" placeholder="Discount in %">
+              </div>
 
               <div class="form-group">
               <button type="submit" name="submit" class="btn btn-primary">submit</button>

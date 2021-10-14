@@ -114,22 +114,32 @@
                         </select>
                     </div>
                     <div class="pdp-buttons">
+
                        <label for="paper">Quantity:</label>
                         <select  name="quantity" id="paper1">
                             {% for i in vpa %}
                             <option onclick="quanselect()" value="{{ i.quantity }}">{{ i.quantity }}</option>
+
                             {% endfor %}
                         </select>
+
+                      <input hidden  name="product_weight" id="product_weight">
+                      <input hidden name="base_price" id="base_price">
+                     <input hidden  name="idi" id="idi">
+                     <input hidden  name="product"value="{{ vp.name }}">
                     </div>
                     <div class="pdp-buttons file-st">
                         <label for="myfile">Select a file:</label>
                         <input multiple type="file" id="myfile" name="myfile">
 
+                        <input type="number" hidden name="gst" value="{{ vgst }}">
+
                     </div>
+
                     <p class="prdct-price"><span id="pricee"></span><span class="tax">Taxes Inclusive </span></p>
                     <div class="pdp-buttons btn-shop">
                      <a href="{% url 'cartpro' %}">   <button type="submit" id="addToCart">ADD TO CART</button></a>
-                        <button type="submit" id="buynow">BUY NOW</button>
+                        <button formaction="{% url 'buynow' %}" type="submit" id="buynow">BUY NOW</button>
                     </div>
                 </div>
                 </form>
@@ -238,10 +248,14 @@ window.onload = function quanselect() {
     var ff = {{ i.unit_Cost_price }}
 
         if(parseInt(iid) === {{ i.quantity }}){
-            console.log("hello")
+            var packing_charge = {{ i.packing_charge }};
+            var product_weight = {{ i.unit_weight }} * {{ i.quantity }};
             var tsum = ff * {{ i.quantity }};
 
-            document.getElementById("pricee").innerHTML = `₹ ${tsum}`;
+            document.getElementById("pricee").value = `₹ ${tsum}`;
+            document.getElementById("base_price").value = tsum;
+            document.getElementById("idi").value = packing_charge;
+            document.getElementById("product_weight").value = product_weight;
         }
     {% endfor %}
 

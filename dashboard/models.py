@@ -337,5 +337,20 @@ class Banner(models.Model):
 
 
 
+class ShippingExpressGlobal(models.Model):
+    shiping_city = models.CharField(max_length=200, null=True, blank=True)
+    shiping_weight = models.FloatField(null=True, blank=True)
+    shiping_charges = models.FloatField(null=True, blank=True)
+    air_rate = models.FloatField(null=True, blank=True)
 
 
+class ShippingPlusGlobal(models.Model):
+    shiping_city = models.CharField(max_length=200, null=True, blank=True)
+    shiping_weight = models.FloatField(null=True, blank=True)
+    shiping_price = models.FloatField(null=True, blank=True)
+
+
+class CouponGlobaladd(models.Model):
+    coupon_code = models.CharField(max_length=100, blank=True, null=True)
+    discount_percent = models.IntegerField(null=True, blank=True)
+    coupon_applied_type = models.CharField(max_length=100, null=True, blank=True)

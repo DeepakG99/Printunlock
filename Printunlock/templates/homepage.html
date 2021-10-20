@@ -65,142 +65,39 @@
         <div class="container">
             <h2 class="main-head">Best Seller</h2>
             <div class="best-seller-inner">
+                {% for i in best_seller_simple %}
+                    {% for j in si|slice:":1" %}
+                        {% if  i.simple_product.id == j.product.id %}
+
                 <div class="best-seller-inner-box">
                     <div class="best-seller-bg">
-                        <img src="img/product.png" alt="" title="">
+                        <img src="/media/Product/{{ j.image }}" alt="" title="" height="230px" width="100%" style="background-position: center">
                         <div class="best-overlay-box"></div>
                     </div>
                     <div class="best-txt">
-                        <h3>Rakhi</h3>
+                        <h3>{{ i.simple_product.name }}</h3>
                     </div>
-                    <div class="product-overlay"><a href="#">
-                        </a>
-                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
-                    </div>
+
+
+
                 </div>
-                <div class="best-seller-inner-box">
-                    <div class="best-seller-bg">
-                        <img src="img/p.jpg" alt="" title="">
-                        <div class="best-overlay-box"></div>
-                    </div>
-                    <div class="best-txt">
-                        <h3>Party</h3>
-                    </div>
-                    <div class="product-overlay"><a href="#">
-                        </a>
-                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
-                    </div>
-                </div>
-                <div class="best-seller-inner-box">
-                    <div class="best-seller-bg">
-                        <img src="img/p2.jpg" alt="" title="">
-                        <div class="best-overlay-box"></div>
-                    </div>
-                    <div class="best-txt">
-                        <h3>Birthday</h3>
-                    </div>
-                    <div class="product-overlay"><a href="#">
-                        </a>
-                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
-                    </div>
-                </div>
-                <div class="best-seller-inner-box">
-                    <div class="best-seller-bg">
-                        <img src="img/p4.jpg" alt="" title="">
-                        <div class="best-overlay-box"></div>
-                    </div>
-                    <div class="best-txt">
-                        <h3>Anniversary</h3>
-                    </div>
-                    <div class="product-overlay"><a href="#">
-                        </a>
-                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
-                    </div>
-                </div>
+
+                        {% endif %}
+                        {% endfor %}
+                {% endfor %}
+
+            {% for i in best_seller_variable %}
                 <div class="best-seller-inner-box mg-tp">
                     <div class="best-seller-bg">
-                        <img src="img/p4.jpg" alt="" title="">
+                        <img src="/media/{{ i.variable_product.image.image }}" alt="" title="" height="230" width="100%">
                         <div class="best-overlay-box"></div>
                     </div>
                     <div class="best-txt">
-                        <h3>Anniversary</h3>
+                        <h3>{{ i.variable_product.product.name }}</h3>
                     </div>
-                    <div class="product-overlay"><a href="#">
-                        </a>
-                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
-                    </div>
+
                 </div>
-                <div class="best-seller-inner-box mg-tp">
-                    <div class="best-seller-bg">
-                        <img src="img/p4.jpg" alt="" title="">
-                        <div class="best-overlay-box"></div>
-                    </div>
-                    <div class="best-txt">
-                        <h3>Anniversary</h3>
-                    </div>
-                    <div class="product-overlay"><a href="#">
-                        </a>
-                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
-                    </div>
-                </div>
-                <div class="best-seller-inner-box mg-tp">
-                    <div class="best-seller-bg">
-                        <img src="img/p4.jpg" alt="" title="">
-                        <div class="best-overlay-box"></div>
-                    </div>
-                    <div class="best-txt">
-                        <h3>Anniversary</h3>
-                    </div>
-                    <div class="product-overlay"><a href="#">
-                        </a>
-                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
-                    </div>
-                </div>
-                <div class="best-seller-inner-box mg-tp">
-                    <div class="best-seller-bg">
-                        <img src="img/p4.jpg" alt="" title="">
-                        <div class="best-overlay-box"></div>
-                    </div>
-                    <div class="best-txt">
-                        <h3>Anniversary</h3>
-                    </div>
-                    <div class="product-overlay"><a href="#">
-                        </a>
-                        <div class="prdct-wish"><a href="#"></a><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-eye"><a href="#"></a><a href="#"><i class="fa fa-eye" aria-hidden="true"></i><!-- a--></a></div><a href="#">
-                        </a>
-                        <div class="prdct-cart"><a href="#"></a><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
-                    </div>
-                </div>
+            {% endfor %}
             </div>
 
         </div>

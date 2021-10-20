@@ -241,6 +241,9 @@
     <div class="attribute">
     <ul>
       <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Trending Categories</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglebestseller" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Best Sellers</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">New Launches</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Trending Prodcuts</button></li>
       <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopexpress" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Shipping Express </button></li>
       <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopplus" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Shipping Plus</button></li>
       <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcoupon" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add  Coupon</button></li>
@@ -265,6 +268,84 @@
                 {% endfor %}
 
             </select>
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+          <div class="modal fade" id="exampleModalTogglebestseller" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Best Seller Products</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'bestsellersimple' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+               <input hidden type="text" name="product_type" id="product_type">
+            <label for="exampleFormControlFile1">Simple Products</label><br>
+            <select name="product_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product</option>
+                    {% for i in sp %}
+
+                        <option  value="{{ i.id }}">{{ i.name }}</option>
+
+                {% endfor %}
+            </select>
+
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+         <form action="{% url  'bestsellervariable' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+               <input hidden type="text" name="product_type" id="product_type">
+            <label for="exampleFormControlFile1"> Variable Products</label><br>
+            <select name="product_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product</option>
+                    {% for i in vp %}
+
+                        <option  value="{{ i.id }}">{{ i.product.name }}</option>
+
+                {% endfor %}
+            </select>
+
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+         <form action="{% url  'bestsellergrouped' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+               <input hidden type="text" name="product_type" id="product_type">
+            <label for="exampleFormControlFile1">Grouped Products</label><br>
+            <select name="product_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product</option>
+                    {% for i in gp %}
+
+                        <option  value="{{ i.id }}">{{ i.description }}</option>
+
+                {% endfor %}
+            </select>
+
 
           </div>
 
@@ -378,4 +459,5 @@
     </div>
 
   </div>
+
   {% endblock content %}

@@ -5,7 +5,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Printo/', include('dashboard.urls')),
+    path('dashboardadmin/', include('dashboard.urls')),
     path('', include('Printunlock.urls')),
 ]
 if settings.DEBUG: 

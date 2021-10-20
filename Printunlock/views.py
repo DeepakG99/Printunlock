@@ -26,7 +26,11 @@ def customerindex(request):
     blog = BlogCategory.objects.all()
     testo = testonomial.objects.all()
     product = SimpleProduct.objects.all()[:10]
-    best_Seller =Best_Sellers.objects.all()[:4]
+    best_Seller_variable =Best_Sellers_variable.objects.all()[:4]
+    vi = variableImage.objects.all()
+    best_Seller_simple =Best_Sellers_simple.objects.all()[:4]
+    si = simpleImage.objects.all()
+    best_Seller_group =Best_Sellers_grouped.objects.all()[:2]
     cupon = Cupon.objects.all()
     context = {'category':category,
                'banner':banner,
@@ -34,7 +38,11 @@ def customerindex(request):
                'testo':testo,
                'product':product,
                'cupon':cupon,
-               'best_seller':best_Seller,
+               'best_seller_simple':best_Seller_simple,
+               'best_seller_variable':best_Seller_variable,
+               'best_seller_group':best_Seller_group,
+               'vi':vi,
+               'si':si,
                'trendcate':trendcate
                }
     return render(request, "homepage.html", context)

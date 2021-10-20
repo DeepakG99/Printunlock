@@ -50,5 +50,8 @@ urlpatterns = [
     path('expressshiping', views.ExpressShipping, name="expressshipping"),
     path('plusshipping', views.PlusShipping, name="plusshipping"),
     path('coupon', views.Coupon, name="coupon"),
+    path('bestsellersimple', views.Best_Seller_simp, name="bestsellersimple"),
+    path('bestsellervariable', views.Best_Seller_variab, name="bestsellervariable"),
+    path('bestsellergrouped', views.Best_Seller_grop, name="bestsellergrouped"),
     path('groupedproducts/<str:ids>/', views.GroupP, name="groupedproducts"),
 ]

@@ -267,21 +267,7 @@ def blogcategory(request):
     return render(request, 'blogcategory.html', {'blogcat':blogcat})
 
 
-def Best_Seller(request):
-    if request.method == "POST":
-        product = request.POST["best_seller"]
-        Best_Sellers.objects.create(prodcut=product)
 
-
-def Trending_item(request):
-    if request.method == "POST":
-        product = request.POST["best_seller"]
-        TrendingProduct.objects.create(prodcut=product)
-
-def New_launches(request):
-    if request.method == "POST":
-        product = request.POST["best_seller"]
-        Newlaunches.objects.create(prodcut=product)
 
 def Remove_Product(request, ids):
     product = SimpleProduct.objects.get(id = ids).delete()
@@ -493,7 +479,7 @@ def GroupP(request, ids):
         gst = request.POST["gst"]
         gsave = GroupedProduct.objects.create(pid1=simple,pid2=variable,slug=slug,description=description, final_price=final_price,
                                       volume_type=volume_type, packing_charge=packing_charge,unit_weight=unit_weight,
-                                      product_margin=product_margin, gst=gst)
+                                      product_margin=product_margin, gst=gst, product_type="grouped")
         gsave.save()
         return redirect('allproductlist')
 
@@ -562,11 +548,48 @@ def voType(request):
 
 def globalAttributes(request):
     cate = Category.objects.all()
+    sp = SimpleProduct.objects.all()
+    vp = VariableProductAttributes.objects.all()
+    gp = GroupedProduct.objects.all()
     context = {
-        "cate":cate
+        "cate":cate,
+        "sp":sp,
+        "vp":vp,
+        "gp":gp
     }
     return render(request,'addatributes.html', context)
 
+
+def Best_Seller_simp(request):
+    if request.method == "POST":
+        product_id = request.POST["product_id"]
+        sp = Best_Sellers_simple.objects.create(simple_product_id=product_id)
+        sp.save()
+        return redirect('globalattributes')
+
+def Best_Seller_variab(request):
+    if request.method == "POST":
+        product_id = request.POST["product_id"]
+        sp = Best_Sellers_variable.objects.create(variable_product_id=product_id)
+        sp.save()
+        return redirect('globalattributes')
+
+def Best_Seller_grop(request):
+    if request.method == "POST":
+        product_id = request.POST["product_id"]
+        sp = Best_Sellers_grouped.objects.create(group_product_id=product_id)
+        sp.save()
+        return redirect('globalattributes')
+
+def Trending_item(request):
+    if request.method == "POST":
+        product = request.POST["best_seller"]
+        TrendingProduct.objects.create(prodcut=product)
+
+def New_launches(request):
+    if request.method == "POST":
+        product = request.POST["best_seller"]
+        Newlaunches.objects.create(prodcut=product)
 def shopbycate(request):
     if request.method == "POST":
         cate = request.POST["cateid"]

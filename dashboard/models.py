@@ -204,18 +204,28 @@ class GroupedProduct(models.Model):
 
 
 
+class AllProdcuts(models.Model):
+    simple_product = models.ForeignKey(SimpleProduct, on_delete=models.CASCADE, null=True, blank=True)
+    variable_product = models.ForeignKey(VariableProductAttributes, on_delete=models.CASCADE, null=True, blank=True)
+    grouped_product = models.ForeignKey(GroupedProduct, on_delete=models.CASCADE, null=True, blank=True)
 
 
 class Shopbycategory(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
 
-class Best_Sellers(models.Model):
-    prodcut = models.ForeignKey(VariableProduct, on_delete=models.CASCADE)
+class Best_Sellers_simple(models.Model):
+    simple_product = models.ForeignKey(SimpleProduct, on_delete=models.CASCADE, null=True, blank=True)
+
+class Best_Sellers_variable(models.Model):
+    variable_product = models.ForeignKey(VariableProductAttributes, on_delete=models.CASCADE, null=True, blank=True)
+
+class Best_Sellers_grouped(models.Model):
+    group_product = models.ForeignKey(GroupedProduct, on_delete=models.CASCADE, null=True, blank=True)
 
 
 
 class Newlaunches(models.Model):
-    product = models.ForeignKey(VariableProduct,on_delete=models.CASCADE)
+    product = models.ForeignKey(VariableProduct,on_delete=models.CASCADE, null=True, blank=True)
 
 class TrendingProduct(models.Model):
     product = models.ForeignKey(VariableProduct,on_delete=models.CASCADE)

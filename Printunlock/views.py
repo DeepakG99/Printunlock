@@ -6,7 +6,7 @@ from django.http.request import HttpRequest
 from django.shortcuts import render, redirect, reverse
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from dashboard.models import *
 from Printunlock.models import *
@@ -16,6 +16,19 @@ import math, random
 # import requests
 import json
 from django.db.models import Q
+import razorpay
+client = razorpay.Client(auth=("rzp_test_oCikcac3N8NNyC", "xikMh7HtbevaufPXuhsYzo74"))
+DATA = {
+            "amount": 100,
+            "currency": "INR",
+            "receipt": "deepakpuri1555@gmail.com",
+            "notes": {
+                "city": "bhopal",
+                "zipcode": "461001"
+            }
+        }
+print(client.order.create(data=DATA))
+
 
 
 # Create your views here.
@@ -31,6 +44,11 @@ def customerindex(request):
     best_Seller_simple =Best_Sellers_simple.objects.all()[:4]
     si = simpleImage.objects.all()
     best_Seller_group =Best_Sellers_grouped.objects.all()[:2]
+    best_offers = Best_Offers.objects.all()
+    nls = NewlaunchesSimple.objects.all()[:4]
+    nlv = NewlaunchesVariable.objects.all()[:4]
+    nlg = NewlaunchesGrouped.objects.all()[:4]
+    happy_clients = HappyClients.objects.all()
     cupon = Cupon.objects.all()
     context = {'category':category,
                'banner':banner,
@@ -43,7 +61,13 @@ def customerindex(request):
                'best_seller_group':best_Seller_group,
                'vi':vi,
                'si':si,
-               'trendcate':trendcate
+               'trendcate':trendcate,
+               'best_offers':best_offers,
+               'nls':nls,
+               'nlv':nlv,
+               'nlg':nlg,
+               'happyclients':happy_clients
+
                }
     return render(request, "homepage.html", context)
 
@@ -239,7 +263,7 @@ def CartPro(request):
             vc = CartVariable.objects.create(user_id=user,product_id=prodid,size=size, quality=quality, quantity=quantity)
             vc.save()
             for i in file:
-                cf = cartSimleFile.objects.create(
+                cf = cartVariableFile.objects.create(
                     cartitem_id=vc.id,
                     file=i
                 )
@@ -248,7 +272,7 @@ def CartPro(request):
             gc = CartGrouped.objects.create(user_id=user,product_id=prodid,size=size, quality=quality, quantity=quantity)
             gc.save()
             for i in file:
-                cf = cartSimleFile.objects.create(
+                cf = cartGroupedFile.objects.create(
                     cartitem_id=gc.id,
                     file=i
                 )
@@ -394,6 +418,16 @@ def final_order(request, ids):
         # order.billing_address = billing_address
         order.product_margin = product_margin
         order.save()
+        DATA = {
+            "amount": final_price_coupon_applied,
+            "currency": "INR",
+            "receipt": customer_email,
+            "notes": {
+                "city": customer_city,
+                "zipcode": customer_zipcode
+            }
+        }
+        print(client.order.create(data=DATA))
         return redirect('allorder')
     simage = []
     shipplus = ShippingPlusGlobal.objects.all()
@@ -402,7 +436,7 @@ def final_order(request, ids):
         sp = SimpleProduct.objects.get(id=order.product_id)
         simage = simpleImage.objects.filter(product_id=order.product_id)[:1]
     elif order.product_type == "variable":
-        sp = VariableProductAttributes.objects.get(product_id=order.product_id)
+        sp = VariableProductAttributes.objects.filter(product_id=order.product_id)
     else:
         sp = GroupedProduct.objects.get(id=order.product_id)
 
@@ -631,3 +665,5 @@ def search(request):
 #         search = request.POST.get('search')
 #         product = Product.objects.filter(Q(title = search))
 #     return render(request, 'search.html', {'product':product})
+
+

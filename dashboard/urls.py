@@ -53,5 +53,11 @@ urlpatterns = [
     path('bestsellersimple', views.Best_Seller_simp, name="bestsellersimple"),
     path('bestsellervariable', views.Best_Seller_variab, name="bestsellervariable"),
     path('bestsellergrouped', views.Best_Seller_grop, name="bestsellergrouped"),
+    path('bestoffers', views.bestoffers, name="bestoffers"),
+    path('newlaunches', views.New_launchesSimple, name="newlauches"),
+    path('newlaunchesvariable', views.New_launchesVariable, name="newlaunchesvariable"),
+    path('newlaunchesgrouped', views.New_launchesGrouped, name="newlaunchesgrouped"),
+    path('happyclients', views.happy_clients, name="happyclients"),
+    path('blogaddhome', views.blogAdd, name="blogaddhome"),
     path('groupedproducts/<str:ids>/', views.GroupP, name="groupedproducts"),
 ]

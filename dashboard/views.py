@@ -1,7 +1,6 @@
 from email.message import Message
 from os import name
 from random import randint
-
 from django.contrib.admin.decorators import action
 from django.shortcuts import render, redirect, reverse
 from django.http.response import HttpResponse, HttpResponseRedirect
@@ -545,17 +544,27 @@ def voType(request):
         return redirect('globalattributes')
 
 
+def bestoffers(request):
+    if request.method == "POST":
+        title = request.POST["title"]
+        description = request.POST["description"]
+        image = request.FILES["image"]
+        ss = Best_Offers.objects.create(title=title, description=description, image=image)
+    return redirect('globalattributes')
+
 
 def globalAttributes(request):
     cate = Category.objects.all()
     sp = SimpleProduct.objects.all()
     vp = VariableProductAttributes.objects.all()
     gp = GroupedProduct.objects.all()
+
     context = {
         "cate":cate,
         "sp":sp,
         "vp":vp,
-        "gp":gp
+        "gp":gp,
+
     }
     return render(request,'addatributes.html', context)
 
@@ -586,10 +595,49 @@ def Trending_item(request):
         product = request.POST["best_seller"]
         TrendingProduct.objects.create(prodcut=product)
 
-def New_launches(request):
+def New_launchesSimple(request):
     if request.method == "POST":
-        product = request.POST["best_seller"]
-        Newlaunches.objects.create(prodcut=product)
+        product_id = request.POST["product_id"]
+        sp = NewlaunchesSimple.objects.create(product_id=product_id)
+        sp.save()
+        return redirect('globalattributes')
+
+def New_launchesVariable(request):
+    if request.method == "POST":
+        product_id = request.POST["product_id"]
+        sp = NewlaunchesVariable.objects.create(product_id=product_id)
+        sp.save()
+        return redirect('globalattributes')
+
+def New_launchesGrouped(request):
+    if request.method == "POST":
+        product_id = request.POST["product_id"]
+        sp = NewlaunchesGrouped.objects.create(product_id=product_id)
+        sp.save()
+        return redirect('globalattributes')
+
+
+def happy_clients(request):
+    if request.method == "POST":
+        name = request.POST["name"]
+        review = request.POST["review"]
+        ss = HappyClients.objects.create(name=name, review=review)
+        ss.save()
+        return redirect('globalattributes')
+
+
+
+def blogAdd(request):
+    if request.method == "POST":
+        title = request.POST["title"]
+        description = request.POST["description"]
+        name = request.POST["name"]
+        image = request.FILES["image"]
+        ss = BlogCategory.objects.create(title=title, desc=description, name=name,image=image)
+        ss.save()
+        return redirect('globalattributes')
+
+
 def shopbycate(request):
     if request.method == "POST":
         cate = request.POST["cateid"]

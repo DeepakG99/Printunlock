@@ -44,17 +44,17 @@
     <section class="icon-sec">
         <div class="icon-sec-outer">
             <div class="icon-sec-inner">
-                <img src="img/icon1.png" alt="">
+                <img src="{% static 'img/icon1.png' %}" alt="">
                 <h3>100% satisfaction Level</h3>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             </div>
             <div class="icon-sec-inner">
-                <img src="img/icon2.png" alt="">
+                <img src="{% static 'img/icon2.png' %}" alt="">
                 <h3>100% satisfaction Level</h3>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             </div>
             <div class="icon-sec-inner">
-                <img src="img/icon3.png" alt="">
+                <img src="{% static 'img/icon3.png' %}" alt="">
                 <h3>100% satisfaction Level</h3>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             </div>
@@ -84,7 +84,7 @@
 
                         {% endif %}
                         {% endfor %}
-                {% endfor %}
+                {% endfor %}"
 
             {% for i in best_seller_variable %}
                 <div class="best-seller-inner-box mg-tp">
@@ -110,7 +110,7 @@
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
             <div class="slider center">
                 <div class="slide">
-                    <div class="cl"><img src="img/best-product3.png">
+                    <div class="cl"><img src="{% static 'img/best-product3.png' %}">
                         <div class="ban-txt">
                             <p>Wedding Cards</p>
                             <a href="#">Read More</a>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <div class="cl"><img src="img/best-product1.png">
+                    <div class="cl"><img src="{% static 'img/best-product1.png' %}">
                          <div class="ban-txt">
                             <p>Wedding Cards</p>
                             <a href="#">Read More</a>
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                     <div class="slide">
-                        <div class="cl"><img src="img/best-product3.png">
+                        <div class="cl"><img src="{% static 'img/best-product3.png' %}">
                              <div class="ban-txt">
                                 <p>Wedding Cards</p>
                                 <a href="#">Read More</a>
@@ -134,7 +134,7 @@
                         </div>
                     </div>
             </div>
-            <a href="" class="b-ofr">View More</a>
+            <a href=" class="b-ofr">View More</a>
         </div>
     </section>
 -->
@@ -146,30 +146,16 @@
             <h2 class="main-head">Best Offers</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
             <div class="slider center">
+                {% for i in best_offers %}
                 <div class="slide">
-                    <div class="cl"><img src="img/best-product3.png">
+                    <div class="cl"><img src="/media/{{ i.image }}" style="max-height: 400px" width="100%">
                         <div class="ban-txt">
-                            <p>Print Online</p>
+                            <p>{{ i.title }}</p>
                             <a href="#">Read More</a>
                         </div>
                     </div>
                 </div>
-                <div class="slide">
-                    <div class="cl"><img src="img/best-product1.png">
-                        <div class="ban-txt">
-                            <p>Photo Gifts</p>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="cl"><img src="img/best-product3.png">
-                        <div class="ban-txt">
-                            <p>Wedding Cards</p>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
+              {% endfor %}"
 
             </div>
         </div>
@@ -186,69 +172,32 @@
                     <div class="carousel-inner">
                         <div class="item active">
                             <div class="row">
+                                {% for i in nlv %}
                                 <div class="col-sm-4">
                                     <div class="photo">
-                                        <img src="img/product.png" class="img-responsive" alt="a" />
-                                        <h4>Gifts</h4>
+                                        <img src="/media/{{ i.product.image.image }}" class="img-responsive" alt=""/>
+                                        <h4>{{ i.product.product.name }}</h4>
                                     </div>
                                     <div class="new-tag">New</div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="photo">
-                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
-                                        <h4>Gifts</h4>
-                                    </div>
-                                    <div class="new-tag">New</div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <div class="photo">
-                                        <img src="img/product.png" class="img-responsive" alt="a" />
-                                        <h4>Gifts</h4>
-                                    </div>
-                                    <div class="new-tag">New</div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <div class="photo">
-                                        <img src="img/p4.jpg" class="img-responsive" alt="a" />
-                                        <h4>Gifts</h4>
-                                    </div>
-                                    <div class="new-tag">New</div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="item">
                             <div class="row">
+                                {% for i in nls %}
+                    {% for j in si|slice:":1" %}
+                        {% if  i.product.id == j.product.id %}
                                 <div class="col-sm-4">
                                     <div class="photo">
-                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
-                                        <h4>Gifts</h4>
+                                        <img src="/media/Product/{{ j.image }}" class="img-responsive" alt="" />
+                                        <h4>{{ i.product.name }}</h4>
                                     </div>
                                     <div class="new-tag">New</div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="photo">
-                                        <img src="img/p4.jpg" class="img-responsive" alt="a" />
-                                        <h4>Gifts</h4>
-                                    </div>
-                                    <div class="new-tag">New</div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <div class="photo">
-                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
-                                        <h4>Gifts</h4>
-                                    </div>
-                                    <div class="new-tag">New</div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="photo">
-                                        <img src="img/p.jpg" class="img-responsive" alt="a" />
-                                        <h4>Gifts</h4>
-                                    </div>
-                                    <div class="new-tag">New</div>
-                                </div>
+                        {% endif %}
+                        {% endfor %}
+                                {% endfor %}
                             </div>
                         </div>
 
@@ -269,22 +218,14 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="photo">
-                                        <img src="img/product.png" class="img-responsive" alt="a" />
+                                        <img src="{% static 'img/product.png' %}" class="img-responsive" alt=""a" />
                                         <h4>Gifts</h4>
                                     </div>
                                     <div class="new-tag">New</div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="photo">
-                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
-                                        <h4>Gifts</h4>
-                                    </div>
-                                    <div class="new-tag">New</div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <div class="photo">
-                                        <img src="img/product.png" class="img-responsive" alt="a" />
+                                        <img src="{% static 'img/p2.jpg' %}" class="img-responsive" alt=""a" />
                                         <h4>Gifts</h4>
                                     </div>
                                     <div class="new-tag">New</div>
@@ -292,7 +233,15 @@
 
                                 <div class="col-sm-4">
                                     <div class="photo">
-                                        <img src="img/p4.jpg" class="img-responsive" alt="a" />
+                                        <img src="{% static 'img/product.png' %}" class="img-responsive" alt=""a" />
+                                        <h4>Gifts</h4>
+                                    </div>
+                                    <div class="new-tag">New</div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="photo">
+                                        <img src="{% static 'img/p4.jpg' %}" class="img-responsive" alt=""a" />
                                         <h4>Gifts</h4>
                                     </div>
                                     <div class="new-tag">New</div>
@@ -303,14 +252,14 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="photo">
-                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
+                                        <img src="{% static 'img/p2.jpg' %}" class="img-responsive" alt=""a" />
                                         <h4>Gifts</h4>
                                     </div>
                                     <div class="new-tag">New</div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="photo">
-                                        <img src="img/p4.jpg" class="img-responsive" alt="a" />
+                                        <img src="{% static 'img/p4.jpg' %}" class="img-responsive" alt=""a" />
                                         <h4>Gifts</h4>
                                     </div>
                                     <div class="new-tag">New</div>
@@ -318,14 +267,14 @@
 
                                 <div class="col-sm-4">
                                     <div class="photo">
-                                        <img src="img/p2.jpg" class="img-responsive" alt="a" />
+                                        <img src="{% static 'img/p2.jpg' %}" class="img-responsive" alt=""a" />
                                         <h4>Gifts</h4>
                                     </div>
                                     <div class="new-tag">New</div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="photo">
-                                        <img src="img/p.jpg" class="img-responsive" alt="a" />
+                                        <img src="{% static 'img/p.jpg' %}" class="img-responsive" alt=""a" />
                                         <h4>Gifts</h4>
                                     </div>
                                     <div class="new-tag">New</div>
@@ -359,14 +308,14 @@
                     <div class="gal-item">
                         <div class="box">
                             <a href="#" data-toggle="modal" data-target="#g1">
-                                <img src="img/g1.jpg">
+                                <img src="{% static 'img/g1.jpg' %}">
                             </a>
                             <div class="modal fade" id="g1" tabindex="-1" role="dialog">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         <div class="modal-body">
-                                            <img src="img/g1.jpg">
+                                            <img src="{% static 'img/g1.jpg' %}">
                                         </div>
                                     </div>
                                 </div>
@@ -380,14 +329,14 @@
                             <div class="gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#g3">
-                                        <img src="img/g3.jpg">
+                                        <img src="{% static 'img/g3.jpg' %}">
                                     </a>
                                     <div class="modal fade" id="g3" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="img/g3.jpg">
+                                                    <img src="{% static 'img/g3.jpg' %}">
                                                 </div>
                                             </div>
                                         </div>
@@ -399,14 +348,14 @@
                             <div class="gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#g3">
-                                        <img src="img/g3.jpg">
+                                        <img src="{% static 'img/g3.jpg' %}">
                                     </a>
                                     <div class="modal fade" id="g3" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="img/g3.jpg">
+                                                    <img src="{% static 'img/g3.jpg' %}">
                                                 </div>
                                             </div>
                                         </div>
@@ -420,14 +369,14 @@
                             <div class="gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#g4">
-                                        <img src="img/g4.jpg">
+                                        <img src="{% static 'img/g4.jpg' %}">
                                     </a>
                                     <div class="modal fade" id="g4" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="img/g4.jpg">
+                                                    <img src="{% static 'img/g4.jpg' %}">
                                                 </div>
                                             </div>
                                         </div>
@@ -444,13 +393,13 @@
     <section class="logo-sec-corp">
         <div class="container">
             <div class="customer-logos slider">
-                <div class="slide"><img src="img/logo1.jpg"></div>
-                <div class="slide"><img src="img/logo2.jpg"></div>
-                <div class="slide"><img src="img/logo3.jpg"></div>
-                <div class="slide"><img src="img/logo4.jpg"></div>
-                <div class="slide"><img src="img/logo5.jpg"></div>
-                <div class="slide"><img src="img/logo6.jpg"></div>
-                <div class="slide"><img src="img/logo7.jpg"></div>
+                <div class="slide"><img src="{% static 'img/logo1.jpg' %}"></div>
+                <div class="slide"><img src="{% static 'img/logo2.jpg' %}"></div>
+                <div class="slide"><img src="{% static 'img/logo3.jpg' %}"></div>
+                <div class="slide"><img src="{% static 'img/logo4.jpg' %}"></div>
+                <div class="slide"><img src="{% static 'img/logo5.jpg' %}"></div>
+                <div class="slide"><img src="{% static 'img/logo6.jpg' %}"></div>
+                <div class="slide"><img src="{% static 'img/logo7.jpg' %}"></div>
             </div>
 
         </div>
@@ -465,28 +414,22 @@
                     <div class="item item0 active">
                         <div class="thumbnail adjust1">
                             <div class="caption">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley,</p>
-                                <h3>bunny denoza</h3>
+                                <p>{{ happyclients.filter.1.review }}</p>
+                                <h3>{{ happyclients.filter.1.name }}</h3>
                             </div>
                         </div>
                     </div>
-                    <div class="item item1">
+                    {% for i in happyclients %}
+                    <div class="item item">
                         <div class="thumbnail adjust1">
                             <div class="caption">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley,</p>
-                                <h3>Sunny denoza</h3>
+                                <p>{{ i.review }}</p>
+                                <h3>{{ i.name }}</h3>
                             </div>
 
                         </div>
                     </div>
-                    <div class="item item2">
-                        <div class="thumbnail adjust1">
-                            <div class="caption">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley,</p>
-                                <h3>Sunny denoza</h3>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -511,30 +454,14 @@
         <div class='container'>
             <h2 class="main-head">From the Blog</h2>
             <div class="slick-carousel">
+                {% for i in blog %}
                 <div class="blog-cntnt">
-                    <date>25.03.2021</date>
-                    <h4>Lorem ipsum</h4>
-                    <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying </p>
-                    <div class="img-client"><img src="img/client.png">by Jennifer Freeman</div>
+                    <date>{{ i.date }}</date>
+                    <h4>{{ i.title }}</h4>
+                    <p>{{ i.desc }}</p>
+                    <div class="img-client"><img src="/media/{{ i.image }}" style=" height: 40px; max-width: 50px;  border-radius: 50%">by {{ i.name }}</div>
                 </div>
-                <div class="blog-cntnt">
-                    <date>25.03.2021</date>
-                    <h4>Lorem ipsum</h4>
-                    <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying </p>
-                    <div class="img-client"><img src="img/client.png">by Jennifer Freeman</div>
-                </div>
-                <div class="blog-cntnt">
-                    <date>25.03.2021</date>
-                    <h4>Lorem ipsum</h4>
-                    <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying </p>
-                    <div class="img-client"><img src="img/client.png">by Jennifer Freeman</div>
-                </div>
-                <div class="blog-cntnt">
-                    <date>25.03.2021</date>
-                    <h4>Lorem ipsum</h4>
-                    <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying </p>
-                    <div class="img-client"><img src="img/client.png">by Jennifer Freeman</div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -627,4 +554,4 @@
 </script>
 
 
-{% endblock body %}
+{% endblock body %}"

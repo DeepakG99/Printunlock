@@ -224,8 +224,20 @@ class Best_Sellers_grouped(models.Model):
 
 
 
-class Newlaunches(models.Model):
-    product = models.ForeignKey(VariableProduct,on_delete=models.CASCADE, null=True, blank=True)
+class Best_Offers(models.Model):
+    title = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    image = models.FileField(null=True, blank=True, upload_to="bestoffer")
+
+
+class NewlaunchesSimple(models.Model):
+    product = models.ForeignKey(SimpleProduct,on_delete=models.CASCADE, null=True, blank=True)
+
+class NewlaunchesVariable(models.Model):
+    product = models.ForeignKey(VariableProductAttributes,on_delete=models.CASCADE, null=True, blank=True)
+
+class NewlaunchesGrouped(models.Model):
+    product = models.ForeignKey(GroupedProduct,on_delete=models.CASCADE, null=True, blank=True)
 
 class TrendingProduct(models.Model):
     product = models.ForeignKey(VariableProduct,on_delete=models.CASCADE)
@@ -298,7 +310,6 @@ class Shiping(models.Model):
 
 class BlogCategory(models.Model):
     title = models.CharField(max_length=50, null=True)
-    slug = models.SlugField(max_length=100, unique=True, db_index=True, null=True)
     desc = models.TextField(null=True)
     name = models.CharField(max_length=20, null=True)
     image = models.ImageField(upload_to ="Product") 
@@ -364,3 +375,9 @@ class CouponGlobaladd(models.Model):
     coupon_code = models.CharField(max_length=100, blank=True, null=True)
     discount_percent = models.IntegerField(null=True, blank=True)
     coupon_applied_type = models.CharField(max_length=100, null=True, blank=True)
+
+
+class HappyClients(models.Model):
+    name = models.CharField(max_length=200, null=True, blank=True)
+    review = models.TextField(null=True, blank=True)
+

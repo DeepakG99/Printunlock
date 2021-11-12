@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-uqcln(#0a$y_#5i1(l)8i*z=vp(l&ylv5(r)tg2r*js=@$ujtv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*","35.154.238.76"]
 
 
 # Application definition
